@@ -27,15 +27,15 @@ As boas práticas deste guia **,portanto, não se destinam a cobrir todos os req
 
 ## Índice
 
-0. [Desenvolva em conformidade com o RGPD](# Sheet_n°0_:_Develop_in_compliance_with_the_RGPD)
+0. [Desenvolva em conformidade com o RGPD](#Sheet_n°0_:_Develop_in_compliance_with_the_RGPD)
 
 1. [Identificar dados pessoais](#Sheet_n°1_:_Identify_personal_data)
 
 2. [Prepare seu desenvolvimento](#Sheet_n°2_:_Prepare_your_development)
 
-3. [Protegendo seu ambiente de desenvolvimento](#Sheet_n°3_:_Protegendo seu ambiente de desenvolvimento)
+3. [Protegendo seu ambiente de desenvolvimento](#Sheet_n°3_:_Protegendo_seu_ambiente_de_desenvolvimento)
 
-4. [Gerenciar seu código fonte](#Sheet_n°4 _: _ Manage_your_source_code)
+4. [Gerenciar seu código fonte](#Sheet_n°4_:_Manage_your_source_code)
 
 5. [Faça uma escolha informada da arquitetura](#Sheet_n°5_:_Make_an_informed_choice_of_architecture)
 
