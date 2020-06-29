@@ -39,7 +39,7 @@ As boas práticas deste guia **,portanto, não se destinam a cobrir todos os req
 
 5. [Faça uma escolha informada da arquitetura](#Sheet_n°5_:_Make_an_informed_choice_of_architecture)
 
-6. [Protegendo seus sites, aplicativos e servidores](#Sheet_n°6_:_Protegendo_seus_ sites,_applications_and_servers)
+6. [Protegendo seus sites, aplicativos e servidores](#Sheet_n°6_:_Protegendo_seus_sites,_applications_and_servers)
 
 7. [Minimizar a coleta de dados](#Sheet_n°7_:_Minimize_data_collection)
 
