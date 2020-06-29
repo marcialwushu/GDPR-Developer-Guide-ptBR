@@ -27,7 +27,7 @@ As boas práticas deste guia **,portanto, não se destinam a cobrir todos os req
 
 ## Índice
 
-0. [Desenvolva em conformidade com o RGPD](#Sheet_n°0_:_Develop_in_compliance_with_the_RGPD)
+0. [Desenvolva em conformidade com o GDPR](#Sheet_n°0_:_Desenvolva_em_conformidade_com_o_GDPR)
 
 1. [Identificar dados pessoais](#Sheet_n°1_:_Identify_personal_data)
 
