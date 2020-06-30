@@ -22,7 +22,7 @@ Configure seu sistema de controle de versão com eficiência, pensando em sua se
 * Mantenha seus segredos e senhas fora do seu repositório de código-fonte:
      * em arquivos **separados, que não foram _comprometidos _**. Lembre-se de usar arquivos especiais do seu sistema de controle de versão (como _.gitignore_ para _Git_) para que você não confirme arquivos confidenciais por engano.
      * em **variáveis de ambiente**, verifique se as variáveis de ambiente não são gravadas acidentalmente em *logs* ou exibidas quando ocorre um erro de aplicativo.
-     * usando [**software específico de gerenciamento de secrets ou configuração**](https://www.digitalocean.com/community/tutorials/an-introduction-to-managing-secrets-safely-with-version-control-systems#using -configuration-management-systems-for-secret-management).
+     * usando [**software específico de gerenciamento de secrets ou configuração**](https://www.digitalocean.com/community/tutorials/an-introduction-to-managing-secrets-safely-with-version-control-systems#using-configuration-management-systems-for-secret-management).
      
 Finalmente, se você precisar incluir esses dados em seu repositório, considere **criptografar/descriptografar automaticamente** os arquivos usando um *plugin* do seu sistema de controle de versão (por exemplo, [_git-crypt_](https://github.com/AGWA/git-crypt)).
 
