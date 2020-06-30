@@ -26,7 +26,7 @@ Configure seu sistema de controle de versão com eficiência, pensando em sua se
      
 Finalmente, se você precisar incluir esses dados em seu repositório, considere **criptografar/descriptografar automaticamente** os arquivos usando um *plugin* do seu sistema de controle de versão (por exemplo, [_git-crypt_](https://github.com/AGWA/git-crypt)).
 
-* Após um _commit_ que contém dados pessoais ou outros dados críticos, não se esqueça de [limpar](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History) [completamente](https : //help.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository#purging-a-file-from-your-repositorys-history) o repositório do código-fonte: mesmo após a modificação, os dados ainda podem estar disponíveis no histórico do seu repositório.
+* Após um _commit_ que contém dados pessoais ou outros dados críticos, não se esqueça de [limpar](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History) [completamente](https://help.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository#purging-a-file-from-your-repositorys-history) o repositório do código-fonte: mesmo após a modificação, os dados ainda podem estar disponíveis no histórico do seu repositório.
 
 * Tenha cuidado antes de **publicar seu código fonte online**. Revise **todo o seu conteúdo** para garantir que não haja dados pessoais, senhas ou outros segredos, incluindo todo o histórico de alterações.
 
