@@ -1,0 +1,550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>README</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <style type="text/css">
+
+  body {
+    font-family: Helvetica, arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+    color: #333;
+    text-align: justify;
+    margin: auto;
+  }
+
+  * {
+      margin: 0;
+      padding: 0;
+      align-items: baseline;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+  }
+
+  body > *:first-child {
+    margin-top: 0 !important;
+  }
+
+  body > *:last-child {
+    margin-bottom: 0 !important;
+  }
+  .line {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+  }
+  .tableofcontent {
+      position:fixed;
+      width:25%;
+      height:100%;
+  }
+  .greyed{
+      color:#555;
+  }
+  #toc{
+      padding-right:30px;
+      padding-bottom: 50px;
+      text-align: left;
+  }
+
+
+  .level2{
+      font-size: 90%;
+      margin-top: 0px !important;
+      margin-bottom: 0px !important;
+  }
+
+  .level1{
+      margin-top: 15px !important;
+  }
+
+  @media all and (min-width: 1000px) {
+      .content{
+          margin-left: 25%;
+          padding:5%;
+          width:65%
+      }
+  }
+
+  @media all and (max-width: 1000px) {
+      .content{
+          padding:6%;
+          width:88%;
+          margin-left: 0%;
+      }
+      .tableofcontent {
+          display:none;
+      }
+  }
+
+
+  a {
+    color: #4183C4;
+    text-decoration: none;
+  }
+
+  a.absent {
+    color: #cc0000;
+  }
+
+  a.anchor {
+    display: block;
+    padding-left: 30px;
+    margin-left: -30px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 20px 0 10px;
+    padding: 0;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+    cursor: text;
+    position: relative;
+    text-align: left;
+  }
+
+  h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+    text-decoration: none;
+  }
+
+  h1 tt, h1 code {
+    font-size: inherit;
+  }
+
+  h2 tt, h2 code {
+    font-size: inherit;
+  }
+
+  h3 tt, h3 code {
+    font-size: inherit;
+  }
+
+  h4 tt, h4 code {
+    font-size: inherit;
+  }
+
+  h5 tt, h5 code {
+    font-size: inherit;
+  }
+
+  h6 tt, h6 code {
+    font-size: inherit;
+  }
+
+  h1 {
+    font-size: 2em;
+    color: black;
+    padding-top:50px;
+  }
+
+  h2 {
+    font-size: 1.7em;
+    border-bottom: 1px solid #cccccc;
+    color: black;
+  }
+
+  h3 {
+    font-size: 1.3px;
+  }
+
+  h4 {
+    font-size: 1.14em;
+  }
+
+  h5 {
+    font-size: 1em;
+  }
+
+  h6 {
+    color: #777777;
+    font-size: 1em;
+  }
+
+  p, blockquote, ul, ol, dl, li, table, pre {
+    margin: 15px 0;
+  }
+
+  hr {
+    border: 0 none;
+    color: #cccccc;
+    height: 4px;
+    padding: 0;
+  }
+
+  body > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  body > h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+    margin-top: 0;
+  }
+
+  li p.first {
+    display: inline-block;
+  }
+
+  ul, ol {
+    padding-left: 30px;
+  }
+
+  ul :first-child, ol :first-child {
+    margin-top: 0;
+  }
+
+  ul :last-child, ol :last-child {
+    margin-bottom: 0;
+  }
+
+
+  blockquote {
+    border-left: 4px solid #dddddd;
+    padding: 0 15px;
+    color: #777777;
+  }
+
+  blockquote > :first-child {
+    margin-top: 0;
+  }
+
+  blockquote > :last-child {
+    margin-bottom: 0;
+  }
+
+  table {
+    padding: 0;
+  }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  table tr:nth-child(2n) {
+    background-color: #f8f8f8;
+  }
+
+  table tr th {
+    font-weight: bold;
+    border: 1px solid #cccccc;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+  }
+
+  table tr td {
+    border: 1px solid #cccccc;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+  }
+
+  table tr th :first-child, table tr td :first-child {
+    margin-top: 0;
+  }
+
+  table tr th :last-child, table tr td :last-child {
+    margin-bottom: 0;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  </style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  TableOfContents();
+}
+);
+
+
+function TableOfContents(container, output) {
+var toc = "";
+var level = 0;
+var container = document.querySelector(container) || document.querySelector('#contents');
+var output = output || '#toc';
+//Inspiration from here: https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page
+container.innerHTML = container.innerHTML.replace(/<h([\d]) id=".*">([^<]+)?<\/h([\d])>/gi, function (str, openLevel, titleText, closeLevel) {
+            console.log(str,openLevel)
+            if (openLevel != closeLevel || openLevel>2) {
+                return str;
+            }
+
+
+            if (openLevel > level) {
+                toc += (new Array(openLevel - level + 1)).join('<ul>');
+            } else if (openLevel < level) {
+                toc += (new Array(level - openLevel + 1)).join('</li></ul>');
+            } else {
+                toc += (new Array(level+ 1)).join('</li>');
+            }
+
+            level = parseInt(openLevel);
+
+            var anchor = titleText.replace(/ /g, "_");
+            if(level ==2){
+                toc += '<li class="level'+level+'"><a  class="greyed" href="#' + anchor + '">' + titleText
+                    + '</a>';
+            }else{
+                toc += '<li class="level'+level+'"><a  href="#' + anchor + '">' + titleText
+                    + '</a>';
+            }
+
+
+            return '<h' + openLevel + '><a href="#' + anchor + '" id="' + anchor + '">'
+                + titleText + '</a></h' + closeLevel + '>';
+        }
+    );
+
+if (level) {
+    toc += (new Array(level + 1)).join('</ul>');
+}
+document.querySelector(output).innerHTML += toc;
+};
+</script>
+
+</head>
+<body>
+<div class="line">
+    <div class="tableofcontent">
+     <div style="overflow-y: scroll; height: 100%;">
+    <div id="toc">
+    </div>
+    </div>
+    </div>
+    <div id="contents" class="content">
+                                <p align="center">
+                                <img src="https://github.com/LINCnil/GDPR-Developer-Guide/raw/master/templates/BANNIERE-EN.JPG" width="100%" align="middle">
+                                </p>
+                                <h1 id="gdpr-developer-guide-ptbr">GDPR Developer Guide ptBR</h1>
+                                <h4 id="para-ajudar-os-desenvolvedores-da-web-e-de-aplicativos-a-tornar-seu-trabalho-compatível-com-o-gdpr-a-cnil-elaborou-um-novo-guia-de-boas-práticas-sob-uma-licença-de-código-aberto-que-deve-ser-enriquecida-por-profissionais.">Para ajudar os desenvolvedores da Web e de aplicativos a tornar seu trabalho compatível com o GDPR, a CNIL elaborou um novo guia de boas práticas sob uma licença de código aberto, que deve ser enriquecida por profissionais.</h4>
+                                <p>Este guia é publicado sob <a href="https://www.gnu.org/licenses/gpl-3.0.html">licença GPLv3</a> e sob a <a href="https://www.etalab.gouv.fr/wp-content/uploads/2017/04/ETALAB-Licence-Ouverte-v2.0.pdf">open license 2.0</a> (explicitamente compatível com <a href="https://creativecommons.org/licenses/by/4.0/deed.fr">CC-BY 4.0 FR</a>). Você pode contribuir livremente para sua redação..</p>
+                                <p>A <a href="https://github.com/LINCnil/Guide-RGPD-du-developpeur">versão Francesa</a> é a versão autêntica deste guia.</p>
+                                <h4 id="este-guia-é-apenas-para-desenvolvedores">Este guia é apenas para desenvolvedores?</h4>
+                                <p>Este guia é voltado principalmente para desenvolvedores que trabalham sozinhos ou em equipes, líderes de equipe, provedores de serviços, mas também para qualquer pessoa interessada no desenvolvimento de aplicativos ou web.</p>
+                                <p>Ele fornece conselhos e melhores práticas e, portanto, fornece chaves úteis para entender o GDPR para cada parte interessada, independentemente do tamanho de sua estrutura. Também pode estimular discussões e práticas nas organizações e nos relacionamentos com os clientes.</p>
+                                <h4 id="o-que-contém-o-guia">O que contém o guia?</h4>
+                                <p>Este guia está dividido em <strong>16 folhas temáticas</strong>, que cobrem a maioria das necessidades dos desenvolvedores em cada estágio do projeto, desde a preparação do desenvolvimento até o uso de analytics.</p>
+                                <p>O Regulamento Geral de Proteção de Dados (ou RGPD) especifica que a proteção dos direitos e liberdades das pessoas singulares exige que <strong>“sejam tomadas as medidas técnicas e organizacionais adequadas para garantir o cumprimento dos requisitos do presente regulamento”</strong> (considerando 78) .</p>
+                                <p>A determinação dessas medidas está necessariamente <strong>relacionada ao contexto das operações de processamento implementadas</strong>, e o responsável pelo tratamento (a entidade pública ou privada que processa dados pessoais) deve, portanto, garantir a segurança dos dados que é chamado a processar .</p>
+                                <p>As boas práticas deste guia <strong>,portanto, não se destinam a cobrir todos os requisitos dos regulamentos nem a serem prescritivas</strong>, elas fornecem um primeiro nível de medidas para levar em conta os problemas de proteção da privacidade nos desenvolvimentos de TI que se destinam a serem aplicados a todos os projetos de processamento de dados. Dependendo da natureza do processamento realizado em certos casos, medidas adicionais deverão ser implementadas para cumprir totalmente os regulamentos.</p>
+                                <h2 id="índice">Índice</h2>
+                                <ol start="0" type="1">
+                                <li><p><a href="#Sheet_n°0_:_Desenvolva_em_conformidade_com_o_GDPR">Desenvolva em conformidade com o GDPR</a></p></li>
+                                <li><p><a href="#Sheet_n°1_:_Identify_personal_data">Identificar dados pessoais</a></p></li>
+                                <li><p><a href="#Sheet_n°2_:_Prepare_your_development">Prepare seu desenvolvimento</a></p></li>
+                                <li><p><a href="#Sheet_n°3_:_Protegendo_seu_ambiente_de_desenvolvimento">Protegendo seu ambiente de desenvolvimento</a></p></li>
+                                <li><p><a href="#Sheet_n°4_:_Manage_your_source_code">Gerenciar seu código fonte</a></p></li>
+                                <li><p><a href="#Sheet_n°5_:_Make_an_informed_choice_of_architecture">Faça uma escolha informada da arquitetura</a></p></li>
+                                <li><p><a href="#Sheet_n°6_:_Protegendo_seus_sites,_applications_and_servers">Protegendo seus sites, aplicativos e servidores</a></p></li>
+                                <li><p><a href="#Sheet_n°7_:_Minimize_data_collection">Minimizar a coleta de dados</a></p></li>
+                                <li><p><a href="#Sheet_n°8_:_Manage_users_profiles">Gerenciar perfis de usuário</a></p></li>
+                                <li><p><a href="#Sheet_n°09_:_Control_your_libraries_and_SDKs">Controle suas bibliotecas e SDKs</a></p></li>
+                                <li><p><a href="#Planilha_n°10_:_Garanta_qualidade_do_documento_e_documentação">Garanta a qualidade do código e sua documentação</a></p></li>
+                                <li><p><a href="#Sheet_n°11_:_Test_your_applications">Teste seus aplicativos</a></p></li>
+                                <li><p><a href="#Sheet_n°12_:_Inform_users">Informar usuários</a></p></li>
+                                <li><p><a href="#Sheet_n°13_:_Prepare_for_the_exercise_of_people_rights">Prepare-se para exercer os direitos das pessoas</a></p></li>
+                                <li><p><a href="#Sheet_n°14_:_Define_a_data_retention_period">Definir um período de retenção de dados</a></p></li>
+                                <li><p><a href="#Sheet_n°15_:_Take_into_account_the_legal_bases_in_the_technical_implementation">Leve em consideração a base jurídica da implementação técnica</a></p></li>
+                                <li><p><a href="#Sheet_n°16:_Use_analytics_on_your_websites_and_applications">Use analytics em seus sites e aplicativos</a></p></li>
+                                </ol>
+                                <h2 id="como-posso-contribuir-para-este-guia">Como posso contribuir para este guia?</h2>
+                                <p><strong>Este guia está disponível em duas versões</strong>:</p>
+                                <ul>
+                                <li>Uma <a href="http://www.cnil.fr/en/rgpd-developers-guide">versão da web no site da CNIL</a> e no guia <a href="https://github.com/LINCnil/GDPR-Developer-Guide/releases">the “Releases” tab</a> deste repositório;</li>
+                                <li>Esta <a href="https://github.com/marcialwushu/GDPR-Developer-Guide-ptBR">versão do GitHub</a>, que oferece a possibilidade de todos contribuírem</li>
+                                </ul>
+                                <p><strong>A contribuição é feita em algumas etapas</strong>:</p>
+                                <ul>
+                                <li>Registre-se no Github;</li>
+                                <li>Vá para a página do projeto;</li>
+                                <li>Você pode:
+                                <ul>
+                                <li>Use uma “Issue” para abrir comentários ou participar da discussão</li>
+                                <li>Use a opção “FFork” para fazer suas próprias modificações e propor sua inclusão através do botão “Pull Requests”.</li>
+                                </ul></li>
+                                </ul>
+                                <p><strong>Sua proposta de contribuição será examinada pelo autor deste projeto antes da publicação</strong>. A versão web do guia do desenvolvedor do RGPD será atualizada regularmente.</p>
+                                <h2 id="uso">Uso</h2>
+                                <p>Para liberar esse repositório, você pode usar a ferramenta <strong>Pandoc</strong>. Essa ferramenta permitirá converter os registros em um arquivo docx ou documento HTML.</p>
+                                <p>Você pode encontrar as instruções para instalar esta ferramenta <a href="https://pandoc.org/installing.html">aqui</a></p>
+                                <ul>
+                                <li><strong>To generate a .docx file</strong>:</li>
+                                </ul>
+                                <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pandoc</span> -s --toc --toc-depth=1 -o Guide_RGPD_developper.docx [0-9][0-9]*.md</span></code></pre></div>
+                                <ul>
+                                <li><strong>To generate an .html file</strong>:</li>
+                                </ul>
+                                <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">pandoc</span> -s --template=<span class="st">&quot;templates/mytemplate.html&quot;</span> -H templates/pandoc.css -o index.html README.md [0-9][0-9]*.md</span></code></pre></div>
+                                <h1 id="sheet-n-0-desenvolva-em-conformidade-com-o-gdpr">Sheet n° 0: Desenvolva em conformidade com o GDPR</h1>
+                                <p><strong>Se você trabalha sozinho, faz parte de uma equipe que desenvolve um projeto, gerencia uma equipe de desenvolvimento ou é um provedor de serviços que desenvolve desenvolvimentos para terceiros, é essencial garantir que os dados do usuário e todo o processamento de dados pessoais sejam suficientemente protegidos durante todo o ciclo de vida do projeto.</strong></p>
+                                <p>As etapas a seguir ajudarão você a desenvolver aplicativos ou sites amigáveis à privacidade:</p>
+                                <ol type="1">
+                                <li><strong>Esteja ciente dos princípios fundamentais do GDPR</strong>. Se você trabalha em equipe, recomendamos que você identifique uma pessoa responsável por monitorar a conformidade. Se sua empresa possui um DPO (Data Protection Officer), essa pessoa é um ativo essencial para <a href="https://www.cnil.fr/sites/default/files/atoms/files/guidelines_on_dpos_5_april_2017.pdf">entender e cumprir as obrigações do GDPR</a>. A nomeação de um DPO também pode ser obrigatória em alguns casos, por exemplo, se seus programas ou aplicativos processam os chamados dados “sensíveis” (veja exemplos) em larga escala ou realizam monitoramento regular e sistemático em larga escala.</li>
+                                <li><strong>Mapeie e categorize os dados e o processamento em seu sistema</strong>. O mapeamento preciso do processamento de dados realizado por seu programa ou aplicativo ajudará você a garantir que eles cumpram os requisitos legais. Manter um <a href="https://www.cnil.fr/en/record-processing-activities">registro das atividades de processamento</a> (um exemplo pode ser encontrado no <a href="https://www.cnil.fr/sites/default/files/atoms/files/record-processing-activities.ods">site da CNIL</a>) permite ter uma visão geral desses dados e identificar e priorizar os riscos associados. De fato, os dados pessoais podem estar presentes em locais inesperados, como em logs do servidor, arquivos de cache, arquivos do Excel etc., e podem ser armazenados em vários locais diferentes. Essa manutenção de registros é obrigatória na maioria dos casos</li>
+                                <li><strong>Priorize as ações necessárias</strong>. Com base no registro do processamento de dados, identifique as ações necessárias para cumprir as obrigações do GDPR antes do desenvolvimento e priorize os pontos de atenção com relação aos riscos que o processamento acarreta para os titulares dos dados. Esses pontos de atenção referem-se, em particular, à necessidade e aos tipos de dados coletados e processados pelo seu software, a base legal na qual suas operações de processamento de dados se baseiam, <a href="#Sheet_n°12:_Informam_usuários">as informações mencionam</a> do seu software ou aplicação, as cláusulas contratuais que o vinculam aos seus contratados, os termos e condições para o exercício dos direitos, as medidas implementadas para proteger seu processamento.</li>
+                                </ol>
+                                <h1 id="sheet-n1-identificar-dados-pessoais">Sheet n°1: Identificar dados pessoais</h1>
+                                <h4 id="compreender-as-noções-de-dados-pessoais-finalidade-e-processamento-é-essencial-para-garantir-que-o-software-cumpra-a-lei-ao-processar-dados-do-usuário.-em-particular-tome-cuidado-para-não-confundir-anonimização-e-pseudonimização-que-têm-definições-muito-precisas-e-diferentes-no-rgpd.">Compreender as noções de “dados pessoais”, “finalidade” e “processamento” é essencial para garantir que o software cumpra a lei ao processar dados do usuário. Em particular, tome cuidado para não confundir “anonimização” e “pseudonimização”, que têm definições muito precisas e diferentes no RGPD.</h4>
+                                <h2 id="definição">Definição</h2>
+                                <ul>
+                                <li><p>A noção de <strong>dados pessoais</strong> é definida no <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679">Regulamento Geral de Proteção de Dados</a> (GDPR ) como “<a href="https://www.cnil.fr/en/personal-data-definition">qualquer informação relativa a uma pessoa singular identificada ou identificável (referida como" titular dos dados ")</a>”. Abrange um amplo escopo que inclui dados de identificação direta (por exemplo, nome e sobrenome) e dados de identificação indireta (por exemplo, número de telefone, placa do veículo, identificador de terminal etc.).</p></li>
+                                <li><p>Qualquer operação neste tipo de dados (coleta, gravação, transmissão, modificação, disseminação etc.) constitui <strong>processamento na acepção do GDPR</strong> e, portanto, deve atender aos requisitos estabelecidos por esse regulamento. Tais operações de processamento devem ser legais e ter um objetivo especificado. Os dados pessoais coletados e processados devem ser relevantes e limitados ao estritamente necessário para alcançar o objetivo.</p></li>
+                                </ul>
+                                <h2 id="exemplos-de-dados-pessoais">Exemplos de dados pessoais</h2>
+                                <ul>
+                                <li><p>No que se refere a pessoas singulares, <strong>os seguintes dados são dados pessoais</strong>:</p>
+                                <ul>
+                                <li>Sobrenome, nome, pseudônimo, data de nascimento;</li>
+                                <li>fotos, gravações sonoras de vozes;</li>
+                                <li>número de telefone fixo ou móvel, endereço postal, endereço de e-mail;</li>
+                                <li>Endereço IP, identificador de conexão do computador ou identificador de cookie;</li>
+                                <li>Impressão digital, palma ou rede venosa da mão, impressão da retina;</li>
+                                <li>Número da placa, número do seguro social, número de identificação;</li>
+                                <li>Dados de uso do aplicativo, comentários, etc …</li>
+                                </ul></li>
+                                <li><p><strong>A identificação de pessoas singulares pode ser realizada</strong>:</p>
+                                <ul>
+                                <li>a partir de um único dado (exemplos: sobrenome e nome);</li>
+                                <li>a partir do cruzamento de um conjunto de dados (exemplo: uma mulher que vive em tal e qual endereço, nascida em tal e tal dia e membro de tal e tal associação).</li>
+                                </ul></li>
+                                <li><p>Alguns dados são considerados <strong>particularmente sensíveis</strong>. O GDPR proíbe a coleta ou o uso de tais dados, a menos que, em particular, todos os titulares de dados envolvidos tenham dado seu consentimento expresso (consentimento ativo, explícito e de preferência por escrito, que deve ser gratuito, específico e informado).</p></li>
+                                <li><p>Esses requisitos dizem respeito aos seguintes dados:</p>
+                                <ul>
+                                <li>dados relativos à <strong>saúde dos indivíduos</strong>;</li>
+                                <li>dados sobre <strong>vida sexual</strong> ou <strong>orientação sexual</strong>;</li>
+                                <li>dados revelando uma suposta origem racial ou étnica;</li>
+                                <li>opiniões políticas, crenças religiosas, crenças filosóficas ou filiação sindical;</li>
+                                <li><strong>dados genéticos</strong> e <strong>biométricos utilizados com a finalidade de identificar exclusivamente um indivíduo</strong>.</li>
+                                </ul></li>
+                                </ul>
+                                <h2 id="anonimização-de-dados-pessoais">Anonimização de dados pessoais</h2>
+                                <ul>
+                                <li><p>Um <strong>processo de anonimização de dados pessoais</strong> visa impossibilitar a identificação de indivíduos nos conjuntos de dados. É, portanto, um processo irreversível. Quando essa anonimização é efetiva, os dados não são mais considerados dados pessoais e os requisitos do GDPR não são mais aplicáveis.</p></li>
+                                <li><p>Por padrão, recomendamos que você nunca <strong>considere conjuntos de dados brutos como anônimos</strong>. A anonimização resulta do processamento de dados pessoais para impedir irreversivelmente a identificação, seja por:</p>
+                                <ul>
+                                <li><em>singling out</em>: não é possível isolar alguns ou todos os registros que identificam um indivíduo no conjunto de dados;</li>
+                                <li><em>linkability</em>: o conjunto de dados não permite vincular dois ou mais registros referentes ao mesmo assunto ou a um grupo de dados;</li>
+                                <li><em>inference</em>: não é possível inferir, com probabilidade significativa, o valor de um atributo a partir dos valores de um conjunto de outros atributos.</li>
+                                </ul></li>
+                                <li><p>Essas operações de processamento de dados implicam na maioria dos casos <strong>perda de qualidade no conjunto de dados produzido</strong>. O grupo de trabalho do artigo 29.º (artigo 29.º do WP) <a href="https://ec.europa.eu/justice/article-29/documentation/opinion-recommendation/files/2014/wp216_en.pdf">parecer sobre técnicas de anonimização</a> descreve o principais técnicas de anonimização usadas atualmente, bem como exemplos de conjuntos de dados considerados erroneamente anônimos. É importante observar que as técnicas de anonimização têm deficiências. A escolha entre anonimizar ou não os dados e a escolha de uma técnica de anonimização deve ser feita caso a caso, de acordo com os diferentes contextos de uso (natureza dos dados, utilidade dos dados, riscos para as pessoas etc.).</p></li>
+                                </ul>
+                                <h2 id="pseudonimização-de-dados-pessoais">Pseudonimização de dados pessoais</h2>
+                                <ul>
+                                <li><p><strong>A pseudonimização é um compromisso entre reter dados brutos e produzir conjuntos de dados anonimizados</strong>.</p></li>
+                                <li><p>Refere-se ao processamento de dados pessoais de forma que <strong>os dados relativos a uma pessoa natural não possam mais ser atribuídos sem informações adicionais</strong>. O GDPR insiste que essas informações adicionais devem ser mantidas separadamente e estar sujeitas a medidas técnicas e organizacionais para evitar a re-identificação dos titulares dos dados. Diferentemente da anonimização, a pseudonimização pode ser um processo reversível.</p></li>
+                                <li><p>Na prática, um processo de pseudonimização consiste em <strong>substituir diretamente os dados de identificação (sobrenome, nome próprio etc.) em um conjunto de dados por dados de identificação indireta</strong> (alias, número em um sistema de arquivamento etc.) para reduzir sua sensibilidade. Eles podem resultar de um hash criptográfico dos dados de indivíduos, como endereço IP, ID do usuário e endereço de email.</p></li>
+                                <li><p>Os dados resultantes da pseudonimização são considerados <strong>dados pessoais e, portanto, permanecem sujeitos às obrigações do DPMR</strong>. No entanto, o Regulamento Europeu incentiva o uso de pseudonimização no processamento de dados pessoais. Além disso, o RGPD considera que a pseudonimização permite reduzir os riscos para os titulares de dados e contribuir para o cumprimento do regulamento.</p></li>
+                                </ul>
+            </div>
+</div>
+</body>
+</html>
