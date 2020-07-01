@@ -30,7 +30,7 @@
      * **Os detalhes de contato do responsável pela proteção de dados** do organismo, se nomeado, ou de um ponto de contato sobre questões de proteção de dados pessoais;
      * **O direito de registrar uma reclamação na sua agência local de proteção de dados.**
      
-* Em certos casos específicos, devem ser fornecidas informações adicionais, por exemplo, no caso de transferências de dados para fora da UE, tomada de decisão ou criação de perfil totalmente automatizadas ou quando a base legal para o processamento for o interesse legítimo do organismo que coleta o dados (consulte as [diretrizes sobre transparência] (https://www.cnil.fr/sites/default/files/atoms/files/wp260_enpdf_transparency.pdf) para obter mais informações).
+* Em certos casos específicos, devem ser fornecidas informações adicionais, por exemplo, no caso de transferências de dados para fora da UE, tomada de decisão ou criação de perfil totalmente automatizadas ou quando a base legal para o processamento for o interesse legítimo do organismo que coleta o dados (consulte as [diretrizes sobre transparência](https://www.cnil.fr/sites/default/files/atoms/files/wp260_enpdf_transparency.pdf) para obter mais informações).
 
 * No caso de cobrança indireta, deve ser adicionado o seguinte:
 
