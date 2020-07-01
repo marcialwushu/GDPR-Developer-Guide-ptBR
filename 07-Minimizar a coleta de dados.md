@@ -14,3 +14,17 @@
 
 * Minimize a quantidade de dados coletados também nos **dados de log** e não armazene dados sensíveis ou críticos (dados de saúde, senhas, etc.).
 
+* Alguns recursos podem melhorar a experiência do usuário, mas **não são estritamente necessários para que seu aplicativo funcione corretamente** (por exemplo, geolocalização para simplificar uma pesquisa geográfica). Nesse caso, o usuário final deve poder **escolher se deve ou não usar** essa funcionalidade. Se ele usá-lo, os dados que você é levado a coletar para sua operação devem ser mantidos apenas pelo tempo estritamente necessário para sua operação e nunca devem ser usados para outros fins.
+
+* Lembre-se de associar **períodos de retenção** para cada categoria de dados, dependendo da finalidade do processamento e das obrigações legais ou regulamentares relacionadas à sua retenção. Os logs também devem ter um período de retenção. Documente as durações de retenção definidas. Você precisará justificá-los.
+
+## Depois que os dados forem coletados, configure mecanismos de exclusão automática.
+
+* Implemente um sistema automático de **purge** no final do prazo de validade. Você também pode implementar revisões manuais dos dados armazenados periodicamente.
+
+* Para garantir uma eliminação completa, apague **fisicamente** todos os dados que não são mais necessários usando ferramentas especializadas ou destruindo a mídia física.
+
+* Se os dados ainda forem úteis, você poderá reduzir sua sensibilidade usando os métodos **pseudomização** ou mesmo **anonimização**. Em caso de pseudonimização, esses dados permanecem sujeitos às regulamentações de dados pessoais (consulte [Folha 1](#Sheet_n°1_:_Identify_personal_data)).
+
+* Registre os **procedimentos de exclusão automática**. Os logs correspondentes podem ser usados como uma **prova de exclusão** de um item de dados.
+
