@@ -40,7 +40,7 @@
 
 * Desde que as condições sejam cumpridas, **passamos, portanto, de um regime de aceitação para um regime de exclusão**.
 
-* Também é possível que o mesmo terceiro (subcontratado) forneça um serviço comparativo de medição de público a vários editores, desde que ** os dados sejam coletados, processados e armazenados independentemente para cada editor e que os rastreadores sejam independentes uns dos outros * *
+* Também é possível que o mesmo terceiro (subcontratado) forneça um serviço comparativo de medição de público a vários editores, desde que **os dados sejam coletados, processados e armazenados independentemente para cada editor e que os rastreadores sejam independentes uns dos outros**
 
 ## Na prática
 
