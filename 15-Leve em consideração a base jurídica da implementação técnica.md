@@ -33,7 +33,7 @@ Exercícios e modalidades de informações a serem fornecidas de acordo com a ba
 
 * A tabela a seguir resume os exercícios de direitos a serem concedidos de acordo com a base legal:
 
-| | Direito de acesso Direito à retificação | Direito de apagar | Direito à restrição de processamento | Direito à portabilidade de dados | Direito de objetar |
+| | Direito de acesso | Direito à retificação | Direito de apagar | Direito à restrição de processamento | Direito à portabilidade de dados | Direito de objetar |
 |:---------------------:|:-------------:|:----------------------:|:--------------------:|:-----------------------------------:|:----------------------:|:---------------------------:|
 | **Consentimento**      | ✔             | ✔                      | ✔                    | ✔                                   | ✔                      | **Retirada do consentimento**|
 | **Contrato**           | ✔             | ✔                      | ✔                    | ✔                                   | ✔                      | ✘                           |
@@ -42,9 +42,19 @@ Exercícios e modalidades de informações a serem fornecidas de acordo com a ba
 | **Interesse público**    | ✔             | ✔                      | ✘                    | ✔                                   | ✘                      | ✔                           |
 | **Proteger interesses vitais**   | ✔             | ✔                      | ✔                    | ✔                                   | ✘                      | ✘                           |
 
+* A base jurídica utilizada deve sempre aparecer nas informações transmitidas à pessoa.
 
+* **Onde seu processamento é baseado em interesses legítimos**, você também deve indicar os interesses legítimos perseguidos (luta contra fraude, segurança do sistema etc.).
 
+* Recomenda-se **documentar sua escolha da base jurídica**. Como exemplo, essas opções podem ser indicadas em um mapa de processamento ou associadas à sua documentação técnica.
 
+## O caso específico de cookies e outros rastreadores
+
+* A Diretiva Européia de Privacidade Eletrônica exige o consentimento do usuário antes que qualquer ação seja tomada para armazenar informações - por meio de cookies, identificadores ou outros rastreadores (impressões digitais de software, pixels) ou para acessar informações armazenadas no equipamento terminal do usuário.
+
+* No entanto, uma exceção é feita quando os cookies têm o único objetivo de realizar comunicação eletrônica ou são estritamente necessários para fornecer um serviço solicitado pelo usuário.
+
+* Além disso, o uso de um único rastreador para múltiplos propósitos não isenta de obter consentimento para os fins que o exigem. Por exemplo, se um cookie de autenticação também for usado para fins de segmentação de publicidade, o consentimento deverá ser obtido para o último objetivo, da mesma maneira que para um site não registrado.
 
 
 
