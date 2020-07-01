@@ -4,5 +4,11 @@
 
 ## Ciclos de retenção de dados
 
+* O ciclo de retenção de dados pessoais pode ser dividido em **três fases sucessivas distintas**:
+     * O banco de dados ativo;
+     * Arquivamento intermediário;
+     * Arquivamento final ou exclusão.
 
+
+* Os mecanismos para excluir dados pessoais das bases ativas garantem que os dados sejam mantidos e acessíveis apenas pelos serviços operacionais **pelo tempo necessário para atingir o objetivo da operação de processamento**.
 
