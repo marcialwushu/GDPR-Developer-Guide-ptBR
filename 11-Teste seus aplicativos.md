@@ -23,7 +23,7 @@
 
 * Dados de produção "reais" não devem ser usados durante a fase de desenvolvimento e teste. Usar dados pessoais do banco de dados de produção para fins de teste equivale a **desviá-los do seu objetivo original**.
 
-* Se dados pessoais forem usados fora da produção, observe que os ** riscos à segurança **também aumentam**: acesso aos dados por pessoas que não precisam conhecer, vários locais de armazenamento, etc. .
+* Se dados pessoais forem usados fora da produção, observe que os **riscos à segurança** também **aumentam**: acesso aos dados por pessoas que não precisam conhecer, vários locais de armazenamento, etc. .
 
 * Portanto, crie um **conjunto de dados fictícios** que se parecerá com os dados que serão processados pelo seu aplicativo. Um conjunto de dados fictícios garantirá que a divulgação desses dados não tenha impacto nas pessoas.
 
