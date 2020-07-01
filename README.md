@@ -76,7 +76,7 @@ As boas práticas deste guia **,portanto, não se destinam a cobrir todos os req
 * Vá para a página do projeto;
 * Você pode:
     * Use uma "Issue" para abrir comentários ou participar da discussão
-    * Use a opção "FFork" para fazer suas próprias modificações e propor sua inclusão através do botão "Pull Requests".
+    * Use a opção "Fork" para fazer suas próprias modificações e propor sua inclusão através do botão "Pull Requests".
     
 **Sua proposta de contribuição será examinada pelo autor deste projeto antes da publicação**. A versão web do guia do desenvolvedor do RGPD será atualizada regularmente.
 
