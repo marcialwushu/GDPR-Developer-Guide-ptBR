@@ -469,7 +469,7 @@ document.querySelector(output).innerHTML += toc;
                                 <li>Você pode:
                                 <ul>
                                 <li>Use uma “Issue” para abrir comentários ou participar da discussão</li>
-                                <li>Use a opção “FFork” para fazer suas próprias modificações e propor sua inclusão através do botão “Pull Requests”.</li>
+                                <li>Use a opção “Fork” para fazer suas próprias modificações e propor sua inclusão através do botão “Pull Requests”.</li>
                                 </ul></li>
                                 </ul>
                                 <p><strong>Sua proposta de contribuição será examinada pelo autor deste projeto antes da publicação</strong>. A versão web do guia do desenvolvedor do RGPD será atualizada regularmente.</p>
@@ -543,6 +543,517 @@ document.querySelector(output).innerHTML += toc;
                                 <li><p>Refere-se ao processamento de dados pessoais de forma que <strong>os dados relativos a uma pessoa natural não possam mais ser atribuídos sem informações adicionais</strong>. O GDPR insiste que essas informações adicionais devem ser mantidas separadamente e estar sujeitas a medidas técnicas e organizacionais para evitar a re-identificação dos titulares dos dados. Diferentemente da anonimização, a pseudonimização pode ser um processo reversível.</p></li>
                                 <li><p>Na prática, um processo de pseudonimização consiste em <strong>substituir diretamente os dados de identificação (sobrenome, nome próprio etc.) em um conjunto de dados por dados de identificação indireta</strong> (alias, número em um sistema de arquivamento etc.) para reduzir sua sensibilidade. Eles podem resultar de um hash criptográfico dos dados de indivíduos, como endereço IP, ID do usuário e endereço de email.</p></li>
                                 <li><p>Os dados resultantes da pseudonimização são considerados <strong>dados pessoais e, portanto, permanecem sujeitos às obrigações do DPMR</strong>. No entanto, o Regulamento Europeu incentiva o uso de pseudonimização no processamento de dados pessoais. Além disso, o RGPD considera que a pseudonimização permite reduzir os riscos para os titulares de dados e contribuir para o cumprimento do regulamento.</p></li>
+                                </ul>
+                                <h1 id="sheet-n2-prepare-seu-desenvolvimento">Sheet n°2: Prepare seu desenvolvimento</h1>
+                                <h4 id="os-princípios-de-proteção-de-dados-pessoais-devem-ser-integrados-aos-desenvolvimentos-de-ti-a-partir-da-fase-de-design-a-fim-de-proteger-a-privacidade-das-pessoas-cujos-dados-você-processará-para-proporcionar-melhor-controle-sobre-os-dados-e-limitar-erros.-perdas-modificações-não-autorizadas-ou-uso-indevido-de-seus-dados-em-aplicativos.">Os princípios de proteção de dados pessoais devem ser integrados aos desenvolvimentos de TI a partir da fase de design, a fim de proteger a privacidade das pessoas cujos dados você processará, para proporcionar melhor controle sobre os dados e limitar erros. , perdas, modificações não autorizadas ou uso indevido de seus dados em aplicativos.</h4>
+                                <h2 id="escolhas-metodológicas">Escolhas metodológicas</h2>
+                                <ul>
+                                <li><p><strong>Coloque a proteção da privacidade no centro de seus desenvolvimentos</strong> adotando um <a href="https://edpb.europa.eu/our-work-tools/public-consultations-art-704/2019/guidelines%20-42019-article-25-data-protection-design_en">Privacy By Design</a>.</p></li>
+                                <li><p>Se você usar métodos ágeis para seus desenvolvimentos, considere <strong>integrar a segurança no centro do seu processo</strong>. O ANSSI disponibilizou um guia <a href="https://www.ssi.gouv.fr/uploads/2018/11/guide-securite-numerique-agile-anssi-pa-v1.pdf">“segurança digital e agilidade”</a> (somente em francês), que indica como conduzir seus desenvolvimentos na estrutura de um método ágil, levando em consideração os aspectos de segurança. Não hesite em se inspirar nisso.</p></li>
+                                <li><p>Para qualquer desenvolvimento destinado ao público em geral, <strong>considere as configurações de privacidade</strong> e, em particular, as configurações padrão, como as características e o conteúdo do usuário visíveis por padrão.</p></li>
+                                <li><p><strong>Realize uma <a href="https://www.cnil.fr/en/privacy-impact-assessment-pia">Avaliação de impacto na privacidade (PIA)</a></strong>. Para <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/accountability-and-governance%20/%20avaliação%20de%20impacto%20de%20proteção%20de%20dados%20/">certas operações de processamento</a> é obrigatório. Noutros casos, é uma boa prática que lhe permitirá identificar e lidar com todos os riscos a montante dos seus desenvolvimentos. A CNIL possui uma seção especial em seu site e fornece um <a href="https://www.cnil.fr/en/open-source-pia-software-helps-carry-out-data-protection-impact-assment">software livre</a> dedicado a esse tipo de análise.</p></li>
+                                </ul>
+                                <h2 id="escolhas-tecnológicas">Escolhas tecnológicas</h2>
+                                <h4 id="arquitetura-e-recursos">Arquitetura e recursos</h4>
+                                <ul>
+                                <li><p><strong>Inclua proteção de privacidade, incluindo requisitos de segurança de dados, no estágio de design do aplicativo ou serviço</strong>. Esses requisitos devem influenciar as <a href="#Sheet_n°5:_Fazer_um_início_da_informática_de_arquitetura">opções de arquitetura</a> (por exemplo, descentralizada vs. centralizada) ou na funcionalidade (por exemplo, anonimização a curto prazo, minimização de dados). As configurações padrão do aplicativo devem atender aos requisitos mínimos de segurança e cumprir a lei. Por exemplo, a complexidade padrão das senhas deve cumprir pelo menos a <a href="https://www.cnil.fr/fr/node/23803">recomendação CNIL sobre senhas</a>.</p></li>
+                                <li><p><strong>Mantenha o controle do seu sistema</strong>. É importante manter o controle do seu sistema, tanto para garantir a operação adequada quanto para garantir um alto nível de segurança. Manter um sistema simples permite entender com precisão como ele funciona e identificar seus pontos fracos. Se uma certa complexidade for necessária, é aconselhável começar com um sistema simples, corretamente projetado e seguro. Em seguida, é possível aumentar a complexidade pouco a pouco, enquanto continua protegendo os novos recursos adicionados.</p></li>
+                                <li><p><strong>Não confie em uma única linha de defesa</strong>. Apesar de todas as etapas adotadas para projetar um sistema seguro, pode acontecer que alguns componentes adicionados posteriormente possam não ser suficientemente seguros. Para minimizar o risco para os usuários finais, é aconselhável defender o sistema em profundidade. Por exemplo, verificar os dados inseridos em um formulário online faz parte das defesas da periferia. Se essa defesa for invadida, a proteção de consultas ao banco de dados poderá assumir o controle.</p></li>
+                                </ul>
+                                <h4 id="ferramentas-e-práticas">Ferramentas e práticas</h4>
+                                <ul>
+                                <li><p><strong>Use padrões de programação que levem em conta a segurança</strong>. Muitas vezes, já estão disponíveis listas de padrões, práticas recomendadas ou guias de codificação para melhorar a segurança de seus desenvolvimentos. As ferramentas auxiliares também podem ser integradas aos seus ambientes de desenvolvimento integrados (“<strong>IDE</strong>”) para verificar automaticamente se seu código está em conformidade com as várias regras que fazem parte desses padrões ou boas práticas. Você pode encontrar facilmente listas de boas práticas para sua linguagem de programação favorita na Internet. Por exemplo <a href="https://wiki.sei.cmu.edu/confluence/display/seccode/SEI+CERT+Coding+Standards">aqui</a> para C, C ++ ou Java. Para o desenvolvimento de aplicativos da Web, existem guias específicos de boas práticas, como os publicados pela <a href="https://www.owasp.org">OWASP</a>.</p></li>
+                                <li><p><strong>As opções tecnológicas são críticas.</strong> Alguns parâmetros precisam ser levados em consideração:</p>
+                                <ul>
+                                <li>Dependendo do campo de aplicação ou funcionalidade desenvolvida, uma linguagem ou tecnologia pode ser mais apropriado que outra.</li>
+                                <li>Linguagens e tecnologias testadas pelo tempo são mais seguras. Em geral, eles foram auditados para corrigir as vulnerabilidades mais conhecidas. No entanto, você deve ter cuidado ao usar as versões mais recentes de cada um dos componentes básicos da tecnologia que você usará.</li>
+                                <li>Você deve evitar codificar sua solução final em uma linguagem que você acabou de aprender e que ainda não domina. Caso contrário, você se expõe a um risco aumentado de falha de segurança devido à falta de experiência.</li>
+                                </ul></li>
+                                <li><p><strong>Configure um ambiente de desenvolvimento seguro que permita a versão do código</strong>, seguindo a <a href="#Sheet_n°3:_Secure_your_development_environment">dedicada sheet</a> neste guia.</p></li>
+                                </ul>
+                                <h1 id="sheet-n3-protegendo-seu-ambiente-de-desenvolvimento">Sheet n°3: Protegendo seu ambiente de desenvolvimento</h1>
+                                <h4 id="a-segurança-dos-servidores-de-produção-desenvolvimento-e-integração-contínua-bem-como-as-estações-de-trabalho-do-desenvolvedor-devem-ser-uma-prioridade-pois-centralizam-o-acesso-a-uma-grande-quantidade-de-dados.">A segurança dos servidores de produção, desenvolvimento e integração contínua, bem como as estações de trabalho do desenvolvedor, devem ser uma prioridade, pois centralizam o acesso a uma grande quantidade de dados.</h4>
+                                <h2 id="avalie-seus-riscos-e-adote-as-medidas-de-segurança-apropriadas">Avalie seus riscos e adote as medidas de segurança apropriadas</h2>
+                                <ul>
+                                <li><p><strong>Avalie os riscos</strong> nas ferramentas e processos usados para seus desenvolvimentos. Faça um inventário de suas medidas de segurança existentes e defina um plano de ação para melhorar sua cobertura de riscos. Nomeie uma pessoa responsável por sua implementação.</p></li>
+                                <li><p>Considere os riscos de todas as ferramentas usadas, incluindo os riscos relacionados ao SaaS (Software como Serviço) e ferramentas colaborativas na nuvem (como <a href="https://slack.com">Slack</a>, <a href="https:%20//trello.com">Trello</a>, <a href="https://github.com">GitHub</a> etc.).</p></li>
+                                </ul>
+                                <h2 id="proteja-seus-servidores-e-estações-de-trabalho-de-maneira-homogênea-e-reproduzível">Proteja seus servidores e estações de trabalho de maneira homogênea e reproduzível</h2>
+                                <ul>
+                                <li><p>As listas de <strong>recomendações</strong> relativas à segurança de servidores, estações de trabalho e redes internas estão disponíveis nas <a href="https://www.cnil.fr/sites/default/files/atoms/files%20/cnil_guide_securite_personnelle_gb_web.pdf">sheets n ° 5 a 8</a> do <strong>guia de segurança de dados pessoais</strong> do CNIL.</p></li>
+                                <li><p>Escreva um <strong>documento listando essas medidas e explicando sua configuração</strong> para garantir que as medidas de segurança sejam implementadas uniformemente em servidores e estações de trabalho. Para reduzir a carga de trabalho, <strong>ferramentas de gerenciamento de configuração</strong>, como <a href="https://github.com/ansible/ansible">Ansible</a>, <a href="https://github.com/puppetlabs/puppet">Puppet</a> ou <a href="https://github.com/chef/chef">Chef</a>, pode ser usado.</p></li>
+                                <li><p>Atualize servidores e estações de trabalho, se possível automaticamente. Você pode configurar uma lista de observação das vulnerabilidades mais importantes, por exemplo, os <a href="https://nvd.nist.gov/vuln/data-feeds">NVD Data Feeds</a>.</p></li>
+                                </ul>
+                                <h2 id="ênfase-especial-no-gerenciamento-de-acesso-e-na-rastreabilidade-das-operações">Ênfase especial no gerenciamento de acesso e na rastreabilidade das operações</h2>
+                                <ul>
+                                <li><p>Lembre-se de documentar o gerenciamento de suas <strong>chaves SSH</strong> (uso de criptografia de última geração e algoritmos de comprimento de chave, proteção de chaves privadas com uma senha, rotação de chaves). Para exemplos de boas práticas, consulte <a href="https://www.ssi.gouv.fr/uploads/2014/01/NT_OpenSSH_en.pdf">o documento sobre o uso seguro do SSH (aberto)</a>.</p></li>
+                                <li><p>Incentive uma autenticação forte nos serviços usados pela equipe de desenvolvimento.</p></li>
+                                <li><p><strong>Rastreie</strong> o acesso às suas máquinas e, se possível, implemente <strong>análise de log automatizada</strong>. Para manter rastreamentos confiáveis, o uso de contas genéricas deve ser evitado.</p></li>
+                                </ul>
+                                <h1 id="sheet-n4-gerenciar-seu-código-fonte">Sheet n°4: Gerenciar seu código fonte</h1>
+                                <h4 id="qualquer-que-seja-o-tamanho-do-seu-projeto-é-altamente-recomendável-usar-uma-ferramenta-de-gerenciamento-de-código-fonte-como-um-sistema-de-controle-de-versão-para-rastrear-suas-diferentes-versões-ao-longo-do-tempo.">Qualquer que seja o tamanho do seu projeto, é altamente recomendável usar uma ferramenta de gerenciamento de código fonte, como um * sistema de controle de versão *, para rastrear suas diferentes versões ao longo do tempo.</h4>
+                                <p>Configure seu sistema de controle de versão com eficiência, pensando em sua segurança.</p>
+                                <ul>
+                                <li><p>Um sistema de controle de versão é um programa de software que permite armazenar <strong>todo o seu código-fonte e arquivos associados</strong>, mantendo a <strong>cronologia de todas as alterações</strong> que foram feitas. Um servidor FTP simples não é um sistema de controle de versão.</p></li>
+                                <li><p>Configure seu ambiente corretamente usando os recursos oferecidos pelo seu sistema de controle de versão. É recomendável que você implemente forte <strong>autenticação</strong> e / ou <strong>autenticação com chaves SSH</strong> no início do seu projeto.</p></li>
+                                <li><p>Além disso, atribua <em>níveis de acesso</em> ao seu projeto aos usuários do seu sistema de controle de versão e defina para cada nível as <strong>permissões</strong> correspondentes (por exemplo, um nível “convidado” com direitos de leitura limitados, um “desenvolvedor” "nível com direitos de gravação etc.).</p></li>
+                                <li><p>Faça <strong>backups</strong> regulares do seu sistema de gerenciamento de código-fonte. Lembre-se de fazer backup do servidor principal, onde todas as alterações são salvas.</p></li>
+                                <li><p>Estabeleça procedimentos de desenvolvimento para trabalhar com eficiência, mesmo que <strong>várias pessoas estejam desenvolvendo ao mesmo tempo</strong>. Por exemplo, você pode decidir não trabalhar na mesma ramificação (<em>master</em>), mas configurar ramificações baseadas em recursos, que serão mescladas na ramificação principal à medida que o desenvolvimento avança. Tais estratégias de desenvolvimento já estão bem documentadas, por exemplo, em <a href="https://nvie.com/posts/a-successful-git-branching-model/">Git Flow</a>. Além disso, alguns sistemas de controle de versão oferecem a configuração de <strong>ramificações protegidas</strong> que impedem alterações não autorizadas nos arquivos nessas ramificações.</p></li>
+                                </ul>
+                                <h2 id="esteja-ciente-do-seu-conteúdo-de-código-fonte.">Esteja ciente do seu conteúdo de código-fonte.</h2>
+                                <ul>
+                                <li><p>Implemente <strong>ferramentas de métricas de qualidade de código</strong> que varrerão seu código assim que for <em>commitido</em> para verificar sua boa qualidade. Você também pode adicionar scripts para verificar essas métricas na <a href="https://git-scm.com/book/uz/v2/Customizing-Git-Git-Hooks">configuração do sistema de controle de versão</a>: o <em>commit</em> será cancelado se o o código fonte não é de qualidade suficiente.</p></li>
+                                <li><p>Mantenha seus segredos e senhas fora do seu repositório de código-fonte:</p>
+                                <ul>
+                                <li>em arquivos <strong>separados, que não foram <em>comprometidos </em></strong>. Lembre-se de usar arquivos especiais do seu sistema de controle de versão (como <em>.gitignore</em> para <em>Git</em>) para que você não confirme arquivos confidenciais por engano.</li>
+                                <li>em <strong>variáveis de ambiente</strong>, verifique se as variáveis de ambiente não são gravadas acidentalmente em <em>logs</em> ou exibidas quando ocorre um erro de aplicativo.</li>
+                                <li>usando <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-managing-secrets-safely-with-version-control-systems#using-configuration-management-systems-for-secret-management"><strong>software específico de gerenciamento de secrets ou configuração</strong></a>.</li>
+                                </ul></li>
+                                </ul>
+                                <p>Finalmente, se você precisar incluir esses dados em seu repositório, considere <strong>criptografar/descriptografar automaticamente</strong> os arquivos usando um <em>plugin</em> do seu sistema de controle de versão (por exemplo, <a href="https://github.com/AGWA/git-crypt"><em>git-crypt</em></a>).</p>
+                                <ul>
+                                <li><p>Após um <em>commit</em> que contém dados pessoais ou outros dados críticos, não se esqueça de <a href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History">limpar</a> <a href="https://help.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository#purging-a-file-from-your-repositorys-history">completamente</a> o repositório do código-fonte: mesmo após a modificação, os dados ainda podem estar disponíveis no histórico do seu repositório.</p></li>
+                                <li><p>Tenha cuidado antes de <strong>publicar seu código fonte online</strong>. Revise <strong>todo o seu conteúdo</strong> para garantir que não haja dados pessoais, senhas ou outros segredos, incluindo todo o histórico de alterações.</p></li>
+                                </ul>
+                                <h2 id="exemplos-de-ferramentas">Exemplos de ferramentas</h2>
+                                <ul>
+                                <li><p>Diferente de ferramentas como <a href="https://subversion.apache.org/">Subversion</a>, que precisam de um servidor central para serem executadas, os principais sistemas de controle de versão (<a href="https://git-scm.com/">Git</a> , <a href="https://www.mercurial-scm.org/">Mercurial</a> por exemplo) são <strong>descentralizados</strong>.</p></li>
+                                <li><p>Para a maioria dessas ferramentas, é fornecida uma <strong>interface da web e ferramentas relacionadas</strong> (gerenciamento de bugs, wiki para sua documentação etc.). Essas soluções podem ser acessíveis via Internet (<a href="https://github.com/">GitHub</a>, <a href="https://bitbucket.org/">Bitbucket</a> etc.) ou podem ser integradas à sua própria conta. servidores.</p></li>
+                                </ul>
+                                <h1 id="sheet-n5-faça-uma-escolha-informada-da-arquitetura">Sheet n°5: Faça uma escolha informada da arquitetura</h1>
+                                <h4 id="ao-projetar-a-arquitetura-do-seu-aplicativo-você-deve-identificar-os-dados-pessoais-que-serão-coletados-e-definir-um-caminho-e-um-ciclo-de-vida-para-cada-um-deles.-a-escolha-dos-ativos-de-suporte-armazenamento-local-servidor-serviço-em-nuvem-é-uma-etapa-crucial-que-deve-ser-adaptada-às-suas-necessidades-mas-também-ao-seu-conhecimento-técnico.-o-registro-e-a-realização-de-uma-avaliação-de-impacto-na-privacidade-podem-ajudá-lo-nessa-escolha.">Ao projetar a arquitetura do seu aplicativo, você deve identificar os dados pessoais que serão coletados e definir um caminho e um ciclo de vida para cada um deles. A escolha dos ativos de suporte (armazenamento local, servidor, serviço em nuvem) é uma etapa crucial, que deve ser adaptada às suas necessidades, mas também ao seu conhecimento técnico. O registro e a realização de uma avaliação de impacto na privacidade podem ajudá-lo nessa escolha.</h4>
+                                <h2 id="examinando-o-ciclo-de-vida-de-dados-e-processos-da-coleta-à-eliminação">Examinando o ciclo de vida de dados e processos, da coleta à eliminação</h2>
+                                <ul>
+                                <li><p>Represente e descreva como o produto geralmente funciona antes de iniciar seu projeto, com um diagrama de fluxos de dados e uma descrição detalhada dos processos realizados.</p></li>
+                                <li><p>Quando os dados são apenas ** armazenados no terminal do usuário ** (armazenamento local) ou permanecem ** confinados nas redes de comunicação sob o controle do usuário ** (por exemplo, Wi-Fi ou outra rede local), o principal ponto de atenção é segurança de dados. A duração pela qual os dados são armazenados e a exclusão real deve ser determinada pelos indivíduos.</p></li>
+                                <li><p><strong>Quando os dados passam por serviços online</strong>, a opção de hospedar os dados você mesmo ou usar um provedor de serviços deve ser feita de acordo com o seu conhecimento de segurança e a qualidade esperada do serviço. Ofertas de nuvem reconhecidas podem oferecer níveis mais altos de segurança. No entanto, eles geram novos riscos que precisam ser dominados. <a href="https://www.cnil.fr/sites/default/files/typo/document/Recommendations_for_companies_planning_to_use_Cloud_computing_services.pdf">Recomendações para empresas que planejam usar serviços de computação em nuvem</a> podem orientar nesta etapa de seleção.</p></li>
+                                </ul>
+                                <h2 id="no-caso-de-uso-de-hospedagem-externa">No caso de uso de hospedagem externa</h2>
+                                <ul>
+                                <li><p><strong>Escolha um provedor de serviços que garanta medidas adequadas de segurança e confidencialidade e seja suficientemente transparente</strong>.</p></li>
+                                <li><p><strong>Verifique a localização geográfica dos servidores que hospedarão seus dados</strong>. Pode ser necessário transferir dados para fora da União Europeia (UE) e do Espaço Econômico Europeu (EEE). Embora os dados possam circular livremente na UE/EEE, são possíveis transferências para fora da UE/EEE, desde que seja garantido um nível suficiente e adequado de proteção de dados. O CNIL fornece um mapa no local mostrando os <a href="https://www.cnil.fr/en/data-protection-around-the-world">diferentes níveis de proteção de dados em países do mundo</a>.</p></li>
+                                <li><p><strong>Se você precisar hospedar dados de saúde</strong>, verifique se o provedor usado é <a href="https://esante.gouv.fr/labels-certifications/hds/liste-des-herbergeurs-certifies">certificado</a> ou <a href="https://esante.gouv.fr/labels-certifications/hds/liste-des-herbergeurs-agrees">aprovado</a> para esta atividade.</p></li>
+                                <li><p>Outros pontos a serem considerados incluem:</p>
+                                <ul>
+                                <li>a existência de uma política de segurança acessível;</li>
+                                <li>segurança física e medidas de segurança no site de hospedagem;</li>
+                                <li>criptografia de dados e outros processos para garantir que o provedor não tenha acesso aos dados que lhe são confiados;</li>
+                                <li>gerenciamento de atualizações, gerenciamento de autorizações, autenticação de pessoal e segurança do desenvolvimento de aplicativos;</li>
+                                <li>a fácil reversibilidade/portabilidade dos dados em um formato estruturado e comumente usado, mediante solicitação e a qualquer momento.</li>
+                                </ul></li>
+                                </ul>
+                                <h1 id="sheet-n6-protegendo-seus-sites-aplicativos-e-servidores">Sheet n°6: Protegendo seus sites, aplicativos e servidores</h1>
+                                <h4 id="qualquer-site-aplicativo-ou-servidor-deve-incorporar-regras-básicas-de-segurança-de-ponta-não-apenas-nas-comunicações-em-rede-mas-também-na-autenticação-e-infraestrutura.">Qualquer site, aplicativo ou servidor deve incorporar regras básicas de segurança de ponta, não apenas nas comunicações em rede, mas também na autenticação e infraestrutura.</h4>
+                                <h2 id="protegendo-redes-de-comunicação">Protegendo redes de comunicação</h2>
+                                <ul>
+                                <li><p><strong>Implemente o TLS versão 1.2 ou 1.3</strong> (substituindo SSL) em todos os sites e para transmissão de dados de seus aplicativos móveis, por exemplo, com <a href="https://letsencrypt.org/fr/">LetsEncrypt</a>, usando apenas os versões recentes e verificação de sua correta implementação.</p></li>
+                                <li><p><strong>Torne obrigatório o uso do TLS</strong> para todas as páginas do seu site e para seus aplicativos móveis.</p></li>
+                                <li><p><strong>Limite as portas de comunicação</strong> estritamente necessárias para o bom funcionamento dos aplicativos instalados. Se o acesso a um servidor Web for possível apenas usando o protocolo HTTPS, apenas as portas 443 e 80 deste servidor deverão estar acessíveis, todas as outras portas poderão ser bloqueadas pelo firewall.</p></li>
+                                <li><p><strong>A OWASP publicou em seu site algumas dicas</strong> por exemplo, para <a href="https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html">implementar corretamente o TLS</a> ou para <a href="https://cheatsheetseries.owasp.org/cheatsheets/Web_Service_Security_Cheat_Sheet.html">proteger um serviço da web</a>.</p></li>
+                                </ul>
+                                <h2 id="protegendo-autenticações">Protegendo autenticações</h2>
+                                <ul>
+                                <li><p><strong>Siga <a href="https://www.cnil.fr/fr/node/23803">a recomendação da CNIL sobre senhas</a></strong>. Lembre-se de limitar o número de tentativas de acesso.</p></li>
+                                <li><p><strong>Nunca armazene senhas em texto não criptografado</strong>. Armazene-os como um hash usando uma biblioteca comprovada, como <a href="https://en.wikipedia.org/wiki/Bcrypt">bcrypt</a>.</p></li>
+                                <li><p><strong>Se forem utilizados cookies para autenticação</strong>, é recomendável:</p>
+                                <ul>
+                                <li><p>para forçar o uso de HTTPS via <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">HSTS</a>;</p></li>
+                                <li><p>para usar a flag <code>secure</code>;</p></li>
+                                <li><p>use a flag <code>HttpOnly</code>.</p></li>
+                                </ul></li>
+                                <li><p><strong>Teste os conjuntos criptográficos instalados nos sistemas</strong> e desative os obsoletos (RC4, MD4, MD5 etc.). Incentive o uso do AES256. <a href="https://owasp.org/www-project-cheat-sheets/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html">Leia a nota do OSWAP sobre o assunto</a>.</p></li>
+                                <li><p><strong>Adote uma política de senha específica para administradores</strong>. Altere as senhas, pelo menos, sempre que um administrador sair e em caso de suspeita de violação. Incentive a autenticação forte quando possível.</p></li>
+                                <li><p><strong>Limite o acesso a ferramentas e interfaces de administração a equipe qualificada.</strong> Incentive o uso de contas com privilégios mais baixos nas operações diárias.</p></li>
+                                <li><p><strong>O acesso remoto às interfaces de administração deve estar sujeito a maiores medidas de segurança.</strong> Por exemplo, para servidores internos, a implementação de uma VPN com autenticação forte do usuário e da estação de trabalho que ele está usando pode ser uma boa solução.</p></li>
+                                </ul>
+                                <h2 id="protegendo-infraestruturas">Protegendo infraestruturas</h2>
+                                <ul>
+                                <li><p><strong>Faça backups, se possível, criptografados e verificados regularmente</strong>. Isso é especialmente útil no caso de um ataque de ransomware nos seus sistemas, pois ter backups para todos os seus sistemas será a única medida que permitirá restaurar seus sistemas.</p></li>
+                                <li><p><strong>Limite o tamanho da pilha de software usada,</strong> e para cada elemento da pilha:</p>
+                                <ul>
+                                <li><strong>Instale atualizações críticas</strong> sem demora, agendando uma verificação semanal automática;</li>
+                                <li><strong>Automatize uma verificação de vulnerabilidades</strong>, assinando o <a href="https://nvd.nist.gov/vuln/data-feeds">NVD Data Feeds</a>, por exemplo.</li>
+                                </ul></li>
+                                <li><p><strong>Use ferramentas de detecção de vulnerabilidade</strong> para os processos mais críticos para detectar possíveis violações de segurança. Sistemas para detectar e prevenir ataques a sistemas ou servidores críticos também podem ser usados. Esses testes devem ser realizados regularmente e antes que qualquer nova versão de software seja colocada em produção.</p></li>
+                                <li><p><strong>Restrinja ou proíba o acesso físico e de software às portas de diagnóstico e configuração remota.</strong> Por exemplo, você pode listar todas as portas abertas usando a ferramenta * netstat *.</p></li>
+                                <li><p><strong>Proteja os bancos de dados que você disponibiliza na Internet</strong>, pelo menos restringindo o acesso o máximo possível (por exemplo, por filtragem de IP) e alterando a senha padrão da conta de administrador.</p></li>
+                                <li><p>Em termos de gerenciamento de banco de dados, boas práticas incluem:</p>
+                                <ul>
+                                <li><strong>usando contas nominativas</strong> para acesso ao banco de dados e crie contas específicas para cada aplicativo;</li>
+                                <li><strong>revogando os privilégios administrativos</strong> das contas de usuário ou aplicativo para evitar modificações na estrutura do banco de dados (tabela, valores, processo, etc);</li>
+                                <li>ter proteção contra ataques de injeção de SQL ou script;</li>
+                                <li>encorajamento em repouso e criptografia de disco e banco de dados.</li>
+                                </ul></li>
+                                </ul>
+                                <h1 id="sheet-n7-minimizar-a-coleta-de-dados">Sheet n°7: Minimizar a coleta de dados</h1>
+                                <h4 id="você-só-deve-coletar-dados-pessoais-adequados-relevantes-e-necessários-em-relação-aos-propósitos-para-os-quais-são-processados-conforme-definido-no-momento-da-coleta.">Você só deve coletar dados pessoais adequados, relevantes e necessários em relação aos propósitos para os quais são processados, conforme definido no momento da coleta.</h4>
+                                <h2 id="antes-da-coleta-pense-nos-diferentes-tipos-de-dados-que-você-precisa-coletar-e-tente-limitar-sua-coleção-ao-estritamente-necessário.">Antes da coleta, pense nos diferentes tipos de dados que você precisa coletar e tente limitar sua coleção ao estritamente necessário.</h2>
+                                <ul>
+                                <li><p>Pense nos diferentes <strong>tipos de dados</strong> que precisarão ser coletados antes da implementação de um aplicativo e <strong>documente</strong> esse pensamento.</p></li>
+                                <li><p>Se dados específicos não forem necessários para uma determinada categoria de pessoas, não os colete.</p></li>
+                                <li><p>Processe e armazene dados de uma maneira que <strong>reduz a precisão</strong> (semelhante à pseudonimização). Por exemplo, armazene apenas o ano de nascimento, em vez de uma data de nascimento completa, se o aplicativo precisar apenas do ano.</p></li>
+                                <li><p>Se estiver coletando dados particularmente sensíveis, como dados de saúde ou condenações criminais, certifique-se de coletar apenas o <strong>mínimo necessário</strong>. Devido às restrições regulatórias, a solução mais simples ainda é <strong>não coletá-las</strong> se você puder ficar sem elas.</p></li>
+                                <li><p>Minimize a quantidade de dados coletados também nos <strong>dados de log</strong> e não armazene dados sensíveis ou críticos (dados de saúde, senhas, etc.).</p></li>
+                                <li><p>Alguns recursos podem melhorar a experiência do usuário, mas <strong>não são estritamente necessários para que seu aplicativo funcione corretamente</strong> (por exemplo, geolocalização para simplificar uma pesquisa geográfica). Nesse caso, o usuário final deve poder <strong>escolher se deve ou não usar</strong> essa funcionalidade. Se ele usá-lo, os dados que você é levado a coletar para sua operação devem ser mantidos apenas pelo tempo estritamente necessário para sua operação e nunca devem ser usados para outros fins.</p></li>
+                                <li><p>Lembre-se de associar <strong>períodos de retenção</strong> para cada categoria de dados, dependendo da finalidade do processamento e das obrigações legais ou regulamentares relacionadas à sua retenção. Os logs também devem ter um período de retenção. Documente as durações de retenção definidas. Você precisará justificá-los.</p></li>
+                                </ul>
+                                <h2 id="depois-que-os-dados-forem-coletados-configure-mecanismos-de-exclusão-automática.">Depois que os dados forem coletados, configure mecanismos de exclusão automática.</h2>
+                                <ul>
+                                <li><p>Implemente um sistema automático de <strong>purge</strong> no final do prazo de validade. Você também pode implementar revisões manuais dos dados armazenados periodicamente.</p></li>
+                                <li><p>Para garantir uma eliminação completa, apague <strong>fisicamente</strong> todos os dados que não são mais necessários usando ferramentas especializadas ou destruindo a mídia física.</p></li>
+                                <li><p>Se os dados ainda forem úteis, você poderá reduzir sua sensibilidade usando os métodos <strong>pseudomização</strong> ou mesmo <strong>anonimização</strong>. Em caso de pseudonimização, esses dados permanecem sujeitos às regulamentações de dados pessoais (consulte <a href="#Sheet_n°1_:_Identify_personal_data">Folha 1</a>).</p></li>
+                                <li><p>Registre os <strong>procedimentos de exclusão automática</strong>. Os logs correspondentes podem ser usados como uma <strong>prova de exclusão</strong> de um item de dados.</p></li>
+                                </ul>
+                                <h1 id="sheet-n8-gerenciar-perfis-de-usuário">Sheet n°8: Gerenciar perfis de usuário</h1>
+                                <h4 id="a-maneira-de-gerenciar-perfis-de-seus-colaboradores-e-usuários-finais-deve-ser-pensada-antes-dos-seus-desenvolvimentos.-consiste-em-definir-diferentes-perfis-de-acesso-e-autorização-para-que-cada-pessoa-possa-acessar-apenas-os-dados-de-que-realmente-precisa.">A maneira de gerenciar perfis de seus colaboradores e usuários finais deve ser pensada antes dos seus desenvolvimentos. Consiste em definir diferentes perfis de acesso e autorização para que cada pessoa possa acessar apenas os dados de que realmente precisa.</h4>
+                                <h2 id="boas-práticas-para-gerenciamento-de-usuários">Boas práticas para gerenciamento de usuários</h2>
+                                <ul>
+                                <li><p>Tudo começa com o <strong>uso de identificadores únicos e individuais</strong>, sejam eles usuários de seu aplicativo ou colaboradores no desenvolvimento.</p></li>
+                                <li><p>Certifique-se de <strong>impor autenticação</strong> antes de qualquer acesso aos dados pessoais, de acordo com as <a href="https://www.cnil.fr/en/passwords-minimum-security-recommendations-businesses-%20e%20cidadãos">recomendações da CNIL</a>.</p></li>
+                                <li><p>Para garantir que cada pessoa (usuário ou colaborador) possa acessar apenas <strong>dados de que ele realmente precisa</strong>, seu sistema deve fornecer <strong>políticas diferenciadas de gerenciamento de acesso a dados</strong> (ler, gravar, excluir etc.) de acordo com para pessoas e necessidades. Um mecanismo global de gerenciamento de perfil de usuário permitirá agrupar direitos diferentes de acordo com uma função exercida por um grupo de usuários no aplicativo.</p></li>
+                                <li><p>O gerenciamento de perfis de usuário pode ser usado juntamente com <strong>sistemas de registro para rastrear atividades e detectar anomalias ou eventos relacionados à segurança</strong>, como acesso fraudulento e uso indevido de dados pessoais. Esses dispositivos não devem ser utilizados para nenhuma outra finalidade que não seja garantir o uso adequado do sistema de computador. Os logs também não devem ser mantidos por mais tempo que o necessário. Em geral, um período de seis meses é adequado.</p></li>
+                                <li><p>Você também pode planejar auditorias de código ou testes de penetração em seu ambiente de desenvolvimento para <strong>garantir a robustez do seu sistema de gerenciamento de perfis</strong>.</p></li>
+                                </ul>
+                                <h2 id="simplifique-o-gerenciamento-de-perfis-de-liberação">Simplifique o gerenciamento de perfis de liberação</h2>
+                                <ul>
+                                <li><p>Planeje <strong>documentar ou automatizar o movimento de seus colaboradores</strong>. Por exemplo, esses procedimentos devem levar as ações a serem tomadas quando as pessoas não estiverem mais autorizadas a acessar uma sala ou recurso de TI ou no final de seu contrato.</p></li>
+                                <li><p>Gerenciar seus usuários e colaboradores implica <strong>uma revisão regular da permissão</strong> de acordo com a evolução dos usos e movimentos organizacionais dentro do seu projeto. O uso de serviços de diretório, como o <em>LDAP</em>, ajudará você a monitorar essas alterações e a refinar suas estratégias de acesso, por exemplo, atribuindo funções com base nos perfis de uso. Isso permite que você respeite melhor o princípio do menor privilégio.</p></li>
+                                <li><p>O uso de contas “supremas” (tipo <em>root</em>, administrador etc.) deve ser evitado para operações convencionais, pois constitui a pedra angular do seu sistema e um destino privilegiado para um possível invasor externo. Recomendamos que você associe uma política de senha forte a ela (10 a 20 caracteres ou multifator) e limite o número de pessoas com conhecimento dela ao estritamente necessário.</p></li>
+                                <li><p><strong>Favorecer o uso de um gerenciador de senhas no seu projeto</strong> e a transição para autenticação forte, quando possível. Evite contas genéricas compartilhadas por várias pessoas.</p></li>
+                                </ul>
+                                <h1 id="sheet-n09-controle-suas-bibliotecas-e-sdks">Sheet n°09: Controle suas bibliotecas e SDKs</h1>
+                                <h4 id="você-usa-bibliotecas-sdks-ou-outros-componentes-de-software-criados-por-terceiros-aqui-estão-algumas-dicas-sobre-como-integrar-essas-ferramentas-mantendo-o-controle-de-seus-desenvolvimentos.">Você usa bibliotecas, SDKs ou outros componentes de software criados por terceiros? Aqui estão algumas dicas sobre como integrar essas ferramentas, mantendo o controle de seus desenvolvimentos.</h4>
+                                <h2 id="faça-uma-escolha-informada">Faça uma escolha informada</h2>
+                                <ul>
+                                <li><p><strong>Avalie o valor da adição de cada dependência.</strong> Alguns tijolos de software comumente usados têm apenas algumas linhas. No entanto, cada elemento adicionado é um aumento na superfície de ataque do seu sistema. No caso em que uma única biblioteca oferece várias funcionalidades, integre apenas as funcionalidades que você realmente precisa. Ao ativar o número mínimo de funcionalidades, você reduz o número de possíveis erros que podem ocorrer.</p></li>
+                                <li><p><strong>Escolha software, bibliotecas e SDKs mantidos:</strong></p>
+                                <ul>
+                                <li><p>Se você deseja usar software livre ou de código aberto, tente escolher projetos ou soluções com uma comunidade ativa, atualizações regulares e boa documentação.</p></li>
+                                <li><p>Se você usar outros tipos de soluções com suporte comercial, garanta contratualmente que o código seja mantido e atualizado por toda a vida útil do seu projeto.</p></li>
+                                </ul></li>
+                                <li><p><strong>Leve em consideração a privacidade.</strong> Alguns SDKs ou bibliotecas se pagam usando dados pessoais coletados dos aplicativos ou sites nos quais estão integrados. Certifique-se de que esses terceiros cumpram as leis aplicáveis em relação aos dados pessoais, incluindo um mecanismo para obter o consentimento do usuário.</p></li>
+                                <li><p><strong>Se você usar mecanismos criptográficos, é altamente desencorajado implementar os algoritmos ou protocolos criptográficos</strong>, mas tente escolher as bibliotecas criptográficas mantidas, reconhecidas e fáceis de usar.</p></li>
+                                </ul>
+                                <h2 id="avalie-os-elementos-selecionados">Avalie os elementos selecionados</h2>
+                                <ul>
+                                <li><strong>Leia a documentação e altere as configurações padrão</strong>. É importante saber como suas dependências funcionam. Bibliotecas e SDKs de terceiros geralmente vêm com arquivos de configuração padrão, que raramente são alterados devido à falta de tempo, o que causa muitas falhas de segurança.</li>
+                                <li><strong>Audite suas bibliotecas e SDKs.</strong> Você realmente sabe o que todas as bibliotecas e SDKs integrados fazem? Quais dados são enviados por essas dependências e para quem? Essa auditoria permitirá determinar as obrigações de proteção de dados a serem respeitadas e estabelecer a responsabilidade dos atores.</li>
+                                <li><strong>Mapeie suas dependências.</strong> As bibliotecas e SDKs de terceiros também podem integrar outros componentes: a auditoria de seu código permitirá mapear melhor todas as suas dependências e agir melhor se um problema afetar uma delas. Também é recomendável que você execute auditorias de segurança de seus componentes de terceiros e os monitore.</li>
+                                <li><strong>Cuidado com o <a href="https://en.wikipedia.org/wiki/Typosquatting">typosquatting</a> e outras técnicas maliciosas.</strong> Verifique os nomes das dependências e suas próprias dependências para evitar ataques. Não copie e cole linhas de comando de sites desconhecidos.</li>
+                                </ul>
+                                <h2 id="manter-bibliotecas-e-sdks">Manter bibliotecas e SDKs</h2>
+                                <ul>
+                                <li><strong>Use sistemas de gerenciamento de dependências</strong> (como yum, apt, maven, pip, etc.) para manter uma lista atualizada de suas dependências.</li>
+                                <li><strong>Gerencie atualizações para suas dependências,</strong> especialmente no caso de atualizações de segurança que corrigem vulnerabilidades. Você deve configurar um procedimento documentado para gerenciar e implantá-los o mais rápido possível.</li>
+                                <li><strong>Esteja ciente das versões de bibliotecas e SDKs no final do suporte</strong> que não serão mais mantidas: tente encontrar outra solução (escolha uma nova biblioteca, renove o suporte comercial).</li>
+                                <li><strong>Verifique o status dos projetos de código aberto,</strong> especialmente a mudança de domínio ou propriedade de pacote, alguns ataques usando atualizações maliciosas de dependências populares.</li>
+                                </ul>
+                                <h1 id="sheet-n10-garanta-a-qualidade-do-código-e-sua-documentação">Sheet n°10: Garanta a qualidade do código e sua documentação</h1>
+                                <h4 id="é-essencial-adotar-boas-técnicas-de-escrita-de-código-o-mais-rápido-possível.-a-legibilidade-do-código-reduz-o-esforço-de-manutenção-e-correções-de-bugs-ao-longo-do-tempo-para-você-e-seus-possivelmente-futuros-colaboradores.">É essencial adotar boas técnicas de escrita de código o mais rápido possível. A legibilidade do código reduz o esforço de manutenção e correções de bugs ao longo do tempo para você e seus (possivelmente futuros) colaboradores.</h4>
+                                <h2 id="código-e-arquitetura-do-documento">Código e arquitetura do documento</h2>
+                                <ul>
+                                <li><p>Às vezes, a documentação é deixada de fora durante o desenvolvimento, devido à falta de tempo ou visibilidade do projeto. No entanto, é <strong>crucial para a manutenção do seu projeto</strong>: permite entender como o código funciona globalmente e saber quais partes do código são afetadas por uma modificação.</p></li>
+                                <li><p><strong>Documente a arquitetura, não apenas o código</strong>: você precisa manter a visão geral em mente ao escrever sua documentação e ajudar os desenvolvedores a entender como todos os seus componentes funcionam juntos. Portanto, concentre-se em diagramas e explicações claras ao documentar seu projeto.</p></li>
+                                <li><p><strong>Mantenha a documentação juntamente com o código</strong>: A melhor maneira de manter sua documentação atualizada é modificá-la à medida que avança no código.</p></li>
+                                <li><p>Se você usa um gerenciador de código-fonte, também pode incluir alterações na documentação para cada “<em>commit</em>” que modifica seu código (consulte em particular [o formulário “Gerenciar seu código-fonte”]](#Sheet_n°4_:_Gerenciar_seu_código-fonte)).</p></li>
+                                <li><p><strong>Não se esqueça de abordar a segurança na sua documentação</strong>. Em particular, você pode documentar as diferentes opções de configuração para seu aplicativo e explicar quais configurações são as mais seguras.</p></li>
+                                </ul>
+                                <h2 id="verifique-a-qualidade-do-seu-código-e-sua-documentação.">Verifique a qualidade do seu código e sua documentação.</h2>
+                                <ul>
+                                <li><p>Um código de qualidade envolve <strong>adoção de boas práticas e convenções de codificação</strong> aplicadas de forma consistente ao longo do programa. Também é melhor consultar as <a href="https://github.com/Kristories/awesome-guidelines">convenções existentes</a>. Aqui estão alguns exemplos de boas práticas:</p>
+                                <ul>
+                                <li><strong>O uso explícito de nomes de variáveis e funções</strong> facilita a compreensão do que está acontecendo à primeira vista.</li>
+                                <li><strong>Recuar corretamente seu código</strong> permite que você veja a estrutura do código mais rapidamente.</li>
+                                <li><strong>Evitar redundância de código</strong> reduz os esforços de correção que precisam ser feitos em vários locais. Um descuido é rapidamente esquecido.</li>
+                                </ul></li>
+                                <li><p><strong>As ferramentas podem ajudá-lo a controlar a qualidade do seu código</strong>. Uma vez configurados corretamente, eles evitarão reler o código para verificar a implementação correta das convenções de codificação. Exemplos dessas ferramentas são:</p>
+                                <ul>
+                                <li><strong>Ambientes de desenvolvimento integrados</strong> (“<em>IDE</em>”), possivelmente usando plugins (“<em>plugins</em>”), podem ser configurados para respeitar as regras de indentação de código, quebras de linha entre diferentes partes do código ou a posição de chaves e outros parênteses.</li>
+                                <li><strong>O software de medição da qualidade do código fonte</strong> pode relatar duplicações de código, conformidade com regras de programação ou possíveis bugs.</li>
+                                </ul></li>
+                                </ul>
+                                <h1 id="sheet-n11-teste-seus-aplicativos">Sheet n°11: Teste seus aplicativos</h1>
+                                <h4 id="o-teste-do-seu-produto-permite-verificar-o-funcionamento-correto-garantir-uma-boa-experiência-do-usuário-e-encontrar-e-evitar-defeitos-antes-de-entrar-em-produção.-testar-seu-produto-também-reduz-o-risco-de-violações-de-dados-pessoais.">O teste do seu produto permite verificar o funcionamento correto, garantir uma boa experiência do usuário e encontrar e evitar defeitos antes de entrar em produção. Testar seu produto também reduz o risco de violações de dados pessoais.</h4>
+                                <h2 id="automatizar-testes">Automatizar testes</h2>
+                                <ul>
+                                <li><p>Os <strong>testes de desenvolvimento</strong> (unitários, funcionais etc.) verificarão a adequação entre as especificações e o funcionamento do produto. Os <strong>testes de segurança</strong> (testes aleatórios de dados também chamados “<em>fuzzing</em>”, <em>scan</em> de vulnerabilidades etc.) verificarão se o produto continua funcionando de maneira aceitável quando você se afasta do uso normal e se não apresenta nenhuma vulnerabilidade. isso poderia permitir que terceiros comprometessem sua segurança. Ambos os tipos de testes são importantes para o bom funcionamento do seu aplicativo.</p></li>
+                                <li><p>Configure um <strong>sistema de integração contínua</strong> para executar os testes automaticamente após cada alteração no seu código-fonte.</p></li>
+                                </ul>
+                                <h2 id="integre-os-testes-à-sua-estratégia-de-negócios.">Integre os testes à sua estratégia de negócios.</h2>
+                                <ul>
+                                <li><p>Adicione a implementação do ambiente de teste à estratégia da empresa. As <strong>métricas aceitáveis</strong> devem ser definidas em conjunto por todas as partes antes do desenvolvimento.</p></li>
+                                <li><p>As métricas a serem consideradas são, por exemplo:</p>
+                                <ul>
+                                <li>A <strong>taxa de cobertura</strong> dos testes e seu tipo;</li>
+                                <li>a <strong>taxa de duplicação</strong> do seu código;</li>
+                                <li>o <strong>número de vulnerabilidades</strong> (conforme definido pelas ferramentas) e seu tipo, etc.</li>
+                                </ul></li>
+                                </ul>
+                                <h2 id="cuidado-com-seus-dados-de-teste">Cuidado com seus dados de teste!</h2>
+                                <ul>
+                                <li><p>Dados de produção “reais” não devem ser usados durante a fase de desenvolvimento e teste. Usar dados pessoais do banco de dados de produção para fins de teste equivale a <strong>desviá-los do seu objetivo original</strong>.</p></li>
+                                <li><p>Se dados pessoais forem usados fora da produção, observe que os <strong>riscos à segurança</strong> também <strong>aumentam</strong>: acesso aos dados por pessoas que não precisam conhecer, vários locais de armazenamento, etc. .</p></li>
+                                <li><p>Portanto, crie um <strong>conjunto de dados fictícios</strong> que se parecerá com os dados que serão processados pelo seu aplicativo. Um conjunto de dados fictícios garantirá que a divulgação desses dados não tenha impacto nas pessoas.</p></li>
+                                <li><p>Se você precisar <strong>importar configurações existentes</strong> da produção para seus casos de teste, considere <strong>anonimizar os dados pessoais</strong> que possam estar presentes.</p></li>
+                                </ul>
+                                <h1 id="sheet-n12-informar-usuários">Sheet n°12: Informar usuários</h1>
+                                <h4 id="o-princípio-da-transparência-do-gdpr-exige-que-qualquer-informação-ou-comunicação-relacionada-ao-processamento-de-dados-pessoais-seja-concisa-transparente-compreensível-e-facilmente-acessível-em-linguagem-simples-e-simples.">O princípio da transparência do GDPR exige que qualquer informação ou comunicação relacionada ao processamento de dados pessoais seja concisa, transparente, compreensível e facilmente acessível em linguagem simples e simples.</h4>
+                                <h2 id="quem-informar-e-quando">Quem informar e quando?</h2>
+                                <ul>
+                                <li><p>Os titulares dos dados devem ser informados:</p>
+                                <ul>
+                                <li>ambos <strong>no caso de coleta direta de dados</strong> ou seja, quando os dados são coletados diretamente de indivíduos (exemplos: formulário, compra on-line, assinatura de contrato, abertura de uma conta bancária) ou quando são coletados por meio de dispositivos ou tecnologias para observar a atividade dos indivíduos (exemplos: análise da navegação na Internet, geolocalização e análise/rastreamento de Wi-Fi para medição de audiência, etc.);</li>
+                                </ul></li>
+                                <li><p>e <strong>no caso de coleta indireta de dados pessoais</strong>, quando os dados não são coletados diretamente de indivíduos (exemplos: dados recuperados de parceiros comerciais, <em>corretores de dados</em>, fontes disponíveis ao público ou outros).</p></li>
+                                <li><p>Esta informação é necessária:</p>
+                                <ul>
+                                <li><strong>durante a coleta de dados</strong> no caso de coleta direta;</li>
+                                <li><strong>o mais rápido possível no caso de coleta indireta</strong> (em particular no momento do primeiro contato com a pessoa) e o mais tardar um mês após a coleta (com <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/individual-rights/right-to-be-informed/#exceptions">exceções</a>);</li>
+                                <li><strong>no caso de uma alteração substancial ou de um evento específico</strong>. Por exemplo: nova finalidade, novos destinatários, alteração na forma como os direitos são exercidos, <a href="#Sheet_n°1:_Identify_personal_data">violação de dados</a>.</li>
+                                </ul></li>
+                                </ul>
+                                <h2 id="que-informações-eu-tenho-para-fornecer">Que informações eu tenho para fornecer?</h2>
+                                <ul>
+                                <li><p>Em todos os casos, você deve especificar:</p>
+                                <ul>
+                                <li><strong>A identidade e detalhes de contato da organização</strong> que coleta os dados (quem os processa?);</li>
+                                <li><strong>Os propósitos</strong> (para que os dados coletados serão usados?);</li>
+                                <li><strong>A base legal</strong> na qual o processamento de dados se baseia (encontre todas as <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/lawful-basis-for-processing/"><strong>informações com base legal</strong></a>);</li>
+                                <li><strong>A natureza obrigatória ou opcional da coleta de dados</strong> (que implica uma reflexão a montante da utilidade da coleta de dados em vista do objetivo perseguido - o princípio da “minimização” dos dados) e as <strong>consequências para a pessoa</strong> em caso de falha no fornecimento dos dados;</li>
+                                <li><strong>Destinatários ou categorias de destinatários dos dados</strong> (quem precisa acessá-los ou recebê-los para os fins definidos, incluindo processadores?);</li>
+                                <li><strong>O período de retenção de dados</strong> (ou critérios para determiná-lo);</li>
+                                <li><strong>A existência dos direitos dos titulares de dados e os meios para exercê-los</strong> (os direitos de acesso, retificação, apagamento e restrição são aplicáveis a todas as operações de processamento);</li>
+                                <li><strong>Os detalhes de contato do responsável pela proteção de dados</strong> do organismo, se nomeado, ou de um ponto de contato sobre questões de proteção de dados pessoais;</li>
+                                <li><strong>O direito de registrar uma reclamação na sua agência local de proteção de dados.</strong></li>
+                                </ul></li>
+                                <li><p>Em certos casos específicos, devem ser fornecidas informações adicionais, por exemplo, no caso de transferências de dados para fora da UE, tomada de decisão ou criação de perfil totalmente automatizadas ou quando a base legal para o processamento for o interesse legítimo do organismo que coleta o dados (consulte as <a href="https://www.cnil.fr/sites/default/files/atoms/files/wp260_enpdf_transparency.pdf">diretrizes sobre transparência</a> para obter mais informações).</p></li>
+                                <li><p>No caso de cobrança indireta, deve ser adicionado o seguinte:</p>
+                                <ul>
+                                <li><strong>Categorias de dados</strong> coletados;</li>
+                                <li><strong>A fonte dos dados</strong> (indicando em particular se são de fontes publicamente disponíveis). ## De que forma devo fornecer essas informações?</li>
+                                </ul></li>
+                                <li><p>As informações devem ser <strong>fáceis de acessar</strong>: o usuário deve poder encontrá-las sem dificuldade.</p></li>
+                                <li><p><strong>Deve ser fornecido de maneira clara e compreensível</strong>, ou seja, com vocabulário simples (frases curtas, sem termos legais ou técnicos, sem ambiguidades) e informações adaptadas ao público-alvo (com atenção especial a crianças e pessoas vulneráveis) .</p></li>
+                                <li><p><strong>Deve ser escrito de maneira concisa</strong>. Para evitar a armadilha de uma enxurrada de informações que abafam o usuário, é necessário <strong>trazer as informações mais relevantes no momento certo</strong>.</p></li>
+                                <li><p>As informações relacionadas à proteção de dados devem ser <strong>distinguíveis das informações que não estão especificamente relacionadas à privacidade (como cláusulas contratuais ou termos e condições gerais de uso).</strong></p></li>
+                                </ul>
+                                <h2 id="que-comunicação-deve-ser-feita-quando-a-segurança-dos-dados-é-comprometida">Que comunicação deve ser feita quando a segurança dos dados é comprometida?</h2>
+                                <ul>
+                                <li><p><strong>Uma organização pode sofrer, por engano ou por negligência, acidental ou maliciosamente, uma violação de dados pessoais, ou seja, a destruição, perda, alteração ou divulgação não autorizada de dados</strong>. Nesse caso, a organização deve relatar a violação à agência local de proteção de dados dentro de <strong>72 horas</strong> se for provável que isso represente um risco aos direitos e liberdades dos indivíduos.</p></li>
+                                <li><p>Se esses riscos forem altos, a organização também deve informar as pessoas envolvidas o mais rápido possível e aconselhá-las sobre como proteger seus dados (por exemplo, cancelamento de um cartão bancário comprometido, modificação de senha, modificação de configurações de privacidade etc.) .).</p></li>
+                                <li><p>A notificação da violação à CNIL deve ser feita através do <a href="https://www.cnil.fr/fr/notifier-une-violation-de-donnees-personnelles">site da CNIL</a>.</p></li>
+                                </ul>
+                                <h2 id="recursos-úteis">Recursos úteis</h2>
+                                <ul>
+                                <li>O site <a href="https://design.cnil.fr/en/">Data &amp; Design</a> desenvolvido pelo Laboratório de Inovação Digital da CNIL desenvolve esses conceitos e contém <a href="https://design.cnil.fr/en/concepts/information/">exemplos de interface</a>.</li>
+                                <li>O site da CNIL também contém <a href="https://www.cnil.fr/fr/rgpd-exemples-de-mentions-dinformation">muitos exemplos de avisos de informação em francês</a>.</li>
+                                <li>A página <a href="https://www.cnil.fr/fr/les-violations-de-donnees-personnelles">violações de dados pessoais</a> no site da CNIL (em francês).</li>
+                                </ul>
+                                <h1 id="sheet-n13-prepare-se-para-exercer-os-direitos-das-pessoas">Sheet n°13: Prepare-se para exercer os direitos das pessoas</h1>
+                                <h4 id="as-pessoas-cujos-dados-você-processa-têm-direitos-sobre-os-dados-dele-direito-de-acesso-retificação-objeção-exclusão-portabilidade-de-dados-e-restrição-de-processamento.-você-deve-fornecer-a-eles-os-meios-para-exercer-efetivamente-seus-direitos-e-fornecer-em-seus-sistemas-de-computador-as-ferramentas-técnicas-que-permitirão-que-seus-direitos-sejam-levados-em-consideração-adequadamente.">As pessoas cujos dados você processa têm direitos sobre os dados dele: direito de acesso, retificação, objeção, exclusão, portabilidade de dados e restrição de processamento. Você deve fornecer a eles os meios para exercer efetivamente seus direitos e fornecer em seus sistemas de computador as ferramentas técnicas que permitirão que seus direitos sejam levados em consideração adequadamente.</h4>
+                                <h4 id="a-preparação-antecipada-de-como-eles-entrarão-em-contato-com-você-e-como-você-lidará-com-as-solicitações-deles-permitirá-que-você-gerencie-o-exercício-desses-direitos-com-eficiência.">A preparação antecipada de como eles entrarão em contato com você e como você lidará com as solicitações deles permitirá que você gerencie o exercício desses direitos com eficiência.</h4>
+                                <h2 id="medidas-mínimas-a-serem-implementadas">Medidas mínimas a serem implementadas</h2>
+                                <ul>
+                                <li><p>Todas as organizações que usam dados pessoais têm <strong>a obrigação de indicar onde e como</strong> indivíduos podem exercer seus direitos em relação a esses dados. Por exemplo, você pode mencionar um endereço de email ou um formulário da Web ao informar indivíduos, bem como em sua política de privacidade.</p></li>
+                                <li><p>Para facilitar o exercício dos direitos das pessoas, esses direitos também podem ser <strong>implementados</strong>, no todo ou em parte, diretamente no <strong>aplicativo ou software que você desenvolve</strong>. Essa implementação específica não é obrigatória, mas permite atender às expectativas dos usuários e reduzir o tempo e a complexidade do processamento desse tipo de solicitação.</p></li>
+                                <li><p>Acima de tudo, no caso de acesso ou operações realizadas diretamente por uma pessoa que exerce seus direitos, não se esqueça de gerenciar sua <strong>autenticação</strong> de maneira segura. No geral, <strong>rastreia</strong> também todas as operações que afetam seus dados pessoais.</p></li>
+                                </ul>
+                                <h2 id="aqui-estão-alguns-exemplos-de-direitos-e-sua-possível-implementação">Aqui estão alguns exemplos de direitos e sua possível implementação</h2>
+                                <ul>
+                                <li><p><strong>Direito de acesso</strong>: as pessoas têm o direito de obter uma cópia de todas as informações que você tem sobre elas. Isso permite, entre outras coisas, que uma pessoa saiba se os dados a seu respeito estão sendo processados e obtenha uma cópia legível em um formato compreensível. Em particular, permite verificar a precisão dos dados. **_ Possível implementação _**: Forneça uma funcionalidade para exibir todos os dados relacionados a uma pessoa. Se houver muitos dados, você poderá dividi-los em vários monitores. Se os dados forem muito grandes, ofereça à pessoa o download de um arquivo que contenha todos os seus dados.</p></li>
+                                <li><p><strong>Direito de apagar</strong>: as pessoas têm o direito de solicitar a exclusão de todos os dados que você possui. **_ Possíveis implementações _**:</p>
+                                <ol type="1">
+                                <li>Forneça uma funcionalidade para apagar todos os dados relacionados a uma pessoa.</li>
+                                <li>Forneça também a notificação automática dos processadores para apagar também os dados relacionados a essa pessoa.</li>
+                                <li>Forneça a exclusão de dados também nos backups ou forneça uma solução alternativa que não restaure os dados apagados relacionados a essa pessoa.</li>
+                                </ol></li>
+                                <li><p><strong>Direito de contestar</strong>: os indivíduos têm o direito de contestar, em certos casos, seus dados que são usados para uma finalidade específica. **_ Possível implementação _**: fornece uma funcionalidade que permite ao sujeito de dados se opor ao processamento. Quando o titular dos dados exercita seu direito de se opor dessa maneira, o responsável pelo tratamento deve excluir os dados já coletados e, posteriormente, não deve coletar mais dados relacionados a essa pessoa.</p></li>
+                                <li><p><strong>Direito à portabilidade de dados</strong>: os indivíduos têm o direito de recuperar seus dados em um formato legível por máquina para uso próprio ou para transferência para outra organização. **_ Possível implementação _**: forneça um recurso que permita que o titular dos dados baixe seus dados em um formato legível por máquina padrão (CSV, XML, JSON etc.).</p></li>
+                                <li><p><strong>Direito de retificação</strong>: Os indivíduos têm o direito de solicitar a modificação de seus dados quando estiverem incorretos, a fim de limitar o uso ou a disseminação de informações erradas. **_ Possível implementação _**: Permite modificar diretamente os dados na conta do usuário.</p></li>
+                                <li><p><strong>Direito à restrição de processamento</strong>: os indivíduos têm o direito de solicitar que o processamento de seus dados seja bloqueado por um determinado período de tempo, por exemplo tempo para examinar uma disputa da parte deles sobre o uso de seus dados ou uma solicitação para exercer direitos. **_ Possível implementação _**: Permite aos administradores colocar dados sobre uma pessoa em “quarentena”: esses dados não podem mais ser lidos ou modificados.</p></li>
+                                </ul>
+                                <h2 id="em-conclusão">Em conclusão</h2>
+                                <ul>
+                                <li><p>O <a href="https://design.cnil.fr/en">site Data &amp; Design</a> desenvolvido pelo Laboratório de Inovação Digital da CNIL desenvolve esses conceitos e contém <a href="https://design.cnil.fr/en/concepts/exercising-rights/">exemplos de interfaces para o exercício de direitos</a>.</p></li>
+                                <li><p>Finalmente, seja <strong>criativo</strong>! (Em caso de dúvida, peça orientação à CNIL).</p></li>
+                                </ul>
+                                <h1 id="sheet-n14-definir-um-período-de-retenção-de-dados">Sheet n°14: Definir um período de retenção de dados</h1>
+                                <h4 id="os-dados-pessoais-não-podem-ser-mantidos-por-um-período-indeterminado-isso-deve-ser-definido-de-acordo-com-os-propósitos-do-processamento.-uma-vez-alcançado-esse-objetivo-os-dados-devem-ser-arquivados-excluídos-ou-tornados-anônimos-por-exemplo-para-produzir-estatísticas.">Os dados pessoais não podem ser mantidos por um período indeterminado: isso deve ser definido de acordo com os propósitos do processamento. Uma vez alcançado esse objetivo, os dados devem ser arquivados, excluídos ou tornados anônimos (por exemplo, para produzir estatísticas).</h4>
+                                <h2 id="ciclos-de-retenção-de-dados">Ciclos de retenção de dados</h2>
+                                <ul>
+                                <li><p>O ciclo de retenção de dados pessoais pode ser dividido em <strong>três fases sucessivas distintas</strong>:</p>
+                                <ul>
+                                <li>O banco de dados ativo;</li>
+                                <li>Arquivamento intermediário;</li>
+                                <li>Arquivamento final ou exclusão.</li>
+                                </ul></li>
+                                <li><p>Os mecanismos para excluir dados pessoais das bases ativas garantem que os dados sejam mantidos e acessíveis apenas pelos serviços operacionais <strong>pelo tempo necessário para atingir o objetivo da operação de processamento</strong>.</p></li>
+                                <li><p>Verifique se <strong>os dados não são mantidos nos bancos de dados ativos</strong> simplesmente observando-os <strong>como sendo arquivados</strong>. Os dados arquivados (arquivo intermediário) devem estar acessíveis apenas a um serviço específico responsável por acessá-los e removê-los do arquivo, se necessário.</p></li>
+                                <li><p>Verifique também se você possui <strong>modos de acesso especificados</strong> para os dados arquivados, pois o uso de um arquivo deve ser ad hoc e excepcional.</p></li>
+                                <li><p>Se possível, use a mesma implementação ao implementar a <strong>remoção de dados ou anonimato</strong> que aquela que gerencia o <strong>direito de exclusão</strong> (consulte <a href="Sheet_n°13:_Prepare_for_the_exercise_of_people&#39;s_rights">folha sobre o exercício dos direitos</a> ), para garantir uma operação homogênea do seu sistema.</p></li>
+                                </ul>
+                                <h2 id="alguns-exemplos-de-prazo-de-validade">Alguns exemplos de prazo de validade</h2>
+                                <ul>
+                                <li><p>Os <strong>dados relativos ao gerenciamento da folha de pagamento ou ao controle do tempo dos funcionários</strong> podem ser mantidos por 5 anos.</p></li>
+                                <li><p>Os <strong>dados em um arquivo médico</strong> devem ser mantidos por 20 anos.</p></li>
+                                <li><p>Os <strong>dados de um possível cliente que não responde a nenhuma solicitação</strong> podem ser mantidos por 3 anos.</p></li>
+                                <li><p>Os <strong>dados de log</strong> podem ser mantidos por 6 meses.</p></li>
+                                </ul>
+                                <h1 id="sheet-n15-leve-em-consideração-a-base-jurídica-da-implementação-técnica">Sheet n°15: Leve em consideração a base jurídica da implementação técnica</h1>
+                                <h4 id="o-processamento-de-dados-pessoais-deve-ser-baseado-em-uma-das-bases-legais-mencionadas-no-artigo-6-do-gdpr.-a-base-legal-de-uma-operação-de-processamento-é-de-certa-forma-a-justificativa-da-existência-da-operação-de-processamento.-a-escolha-de-uma-base-jurídica-tem-um-impacto-direto-nas-condições-de-implementação-da-operação-de-processamento-e-nos-direitos-dos-indivíduos.-assim-antecipar-a-base-jurídica-das-operações-de-processamento-antes-de-qualquer-desenvolvimento-ajudará-você-a-integrar-as-funções-necessárias-para-garantir-que-essas-operações-de-processamento-cumpram-a-lei-e-respeitem-os-direitos-dos-indivíduos.">O processamento de dados pessoais deve ser baseado em uma das “bases legais” mencionadas no <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679&amp;from=FR#d1e1888-1-1">artigo 6 do GDPR</a>. A base legal de uma operação de processamento é de certa forma a justificativa da existência da operação de processamento. A escolha de uma base jurídica tem um impacto direto nas condições de implementação da operação de processamento e <a href="#Sheet_n°13_:_Preparing_the_exercise_of_persons_rights">nos direitos dos indivíduos</a>. Assim, antecipar a base jurídica das operações de processamento antes de qualquer desenvolvimento ajudará você a integrar as funções necessárias para garantir que essas operações de processamento cumpram a lei e respeitem os direitos dos indivíduos.</h4>
+                                <h2 id="definição-das-bases-jurídicas-no-rgpd">Definição das bases jurídicas no RGPD</h2>
+                                <ul>
+                                <li>No contexto de um desenvolvimento para uma organização privada (empresas, associações, etc.), as bases jurídicas frequentemente usadas são:
+                                <ul>
+                                <li><strong>O contrato</strong>: o processamento é necessário para a execução ou preparação de um contrato entre o titular dos dados e o organismo que realiza a operação de processamento;</li>
+                                <li><strong>O interesse legítimo</strong>: a organização tem um interesse “legítimo” em realizar o processamento e não é provável que afete negativamente os direitos e liberdades dos titulares dos dados;</li>
+                                <li><strong>Consentimento</strong>: o titular dos dados deu seu consentimento explícito para o processamento.</li>
+                                </ul></li>
+                                <li>Se você é uma autoridade pública ou um órgão que realiza tarefas de interesse público, outras bases legais também podem ser usadas:
+                                <ul>
+                                <li><strong>A obrigação legal</strong>: o processamento é imposto por textos regulatórios.</li>
+                                <li><strong>A missão de interesse público</strong>: o processamento é necessário para a execução de uma tarefa realizada no interesse público.</li>
+                                </ul></li>
+                                <li>Finalmente, em casos muito específicos, <strong>a proteção de interesses vitais</strong> pode ser usada como base legal, por exemplo, quando o processamento é necessário para monitorar a propagação de epidemias ou em casos de emergência humanitária.</li>
+                                </ul>
+                                <h2 id="escolha-a-base-jurídica-apropriada">Escolha a base jurídica apropriada</h2>
+                                <ul>
+                                <li><p>Antes de tudo, verifique no site da CNIL que <strong>um texto não impõe restrições específicas</strong> (por exemplo: <a href="https://www.cnil.fr/sites/default/files/atoms/files/draft_recommendation_cookies_and_other_trackers_en.pdf">cookies e outros rastreadores</a>).</p></li>
+                                <li><p><strong>Apenas uma base jurídica deve ser escolhida</strong> para um determinado objetivo. A base jurídica não pode ser acumulada para a mesma finalidade. A mesma operação de processamento de dados pode buscar vários propósitos e uma base legal deve ser definida para cada um deles.</p></li>
+                                <li><p>Como mencionado acima, se você é uma <strong>autoridade pública</strong>, a obrigação legal e a missão de interesse público serão as mais relevantes na maioria dos casos.</p></li>
+                                <li><p>Se sua operação de processamento faz parte de um relacionamento contratual e seu objetivo é objetiva e estritamente necessário para a prestação do serviço do usuário (por exemplo, nome, nome e endereço para criar uma conta em um site de comércio eletrônico), então <strong>o contrato deve seja apropriado</strong>.</p></li>
+                                <li><p>Se o seu processamento não fizer parte de uma relação contratual com o usuário, <strong>a base jurídica do consentimento ou interesse legítimo</strong> poderá ser invocada. Se o seu processamento for potencialmente invasivo (criação de perfil, coleta de dados de geolocalização, etc.), o consentimento provavelmente será a base legal apropriada.</p></li>
+                                <li><p>Se o seu processamento contiver <strong>dados confidenciais</strong> (dados de saúde, dados relativos à vida ou orientação sexual, etc.), será necessário identificar, além da base legal, uma exceção prevista no <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679&amp;from=FR#d1e2051-1-1">Artigo 9 da RGPD</a>.</p></li>
+                                </ul>
+                                <p>Exercícios e modalidades de informações a serem fornecidas de acordo com a base legal</p>
+                                <ul>
+                                <li>A tabela a seguir resume os exercícios de direitos a serem concedidos de acordo com a base legal:</li>
+                                </ul>
+                                <table style="width:100%;">
+                                <colgroup>
+                                <col style="width: 13%" />
+                                <col style="width: 8%" />
+                                <col style="width: 13%" />
+                                <col style="width: 12%" />
+                                <col style="width: 21%" />
+                                <col style="width: 13%" />
+                                <col style="width: 16%" />
+                                </colgroup>
+                                <thead>
+                                <tr class="header">
+                                <th style="text-align: center;"></th>
+                                <th style="text-align: center;">Direito de acesso</th>
+                                <th style="text-align: center;">Direito à retificação</th>
+                                <th style="text-align: center;">Direito de apagar</th>
+                                <th style="text-align: center;">Direito à restrição de processamento</th>
+                                <th style="text-align: center;">Direito à portabilidade de dados</th>
+                                <th style="text-align: center;">Direito de objetar</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="odd">
+                                <td style="text-align: center;"><strong>Consentimento</strong></td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;"><strong>Retirada do consentimento</strong></td>
+                                </tr>
+                                <tr class="even">
+                                <td style="text-align: center;"><strong>Contrato</strong></td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✘</td>
+                                </tr>
+                                <tr class="odd">
+                                <td style="text-align: center;"><strong>Interesse legítimo</strong></td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✘</td>
+                                <td style="text-align: center;">✔</td>
+                                </tr>
+                                <tr class="even">
+                                <td style="text-align: center;"><strong>Obrigação legal</strong></td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✘</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✘</td>
+                                <td style="text-align: center;">✘</td>
+                                </tr>
+                                <tr class="odd">
+                                <td style="text-align: center;"><strong>Interesse público</strong></td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✘</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✘</td>
+                                <td style="text-align: center;">✔</td>
+                                </tr>
+                                <tr class="even">
+                                <td style="text-align: center;"><strong>Proteger interesses vitais</strong></td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✔</td>
+                                <td style="text-align: center;">✘</td>
+                                <td style="text-align: center;">✘</td>
+                                </tr>
+                                </tbody>
+                                </table>
+                                <ul>
+                                <li><p>A base jurídica utilizada deve sempre aparecer nas informações transmitidas à pessoa.</p></li>
+                                <li><p><strong>Onde seu processamento é baseado em interesses legítimos</strong>, você também deve indicar os interesses legítimos perseguidos (luta contra fraude, segurança do sistema etc.).</p></li>
+                                <li><p>Recomenda-se <strong>documentar sua escolha da base jurídica</strong>. Como exemplo, essas opções podem ser indicadas em um mapa de processamento ou associadas à sua documentação técnica.</p></li>
+                                </ul>
+                                <h2 id="o-caso-específico-de-cookies-e-outros-rastreadores">O caso específico de cookies e outros rastreadores</h2>
+                                <ul>
+                                <li><p>A Diretiva Européia de Privacidade Eletrônica exige o consentimento do usuário antes que qualquer ação seja tomada para armazenar informações - por meio de cookies, identificadores ou outros rastreadores (impressões digitais de software, pixels) ou para acessar informações armazenadas no equipamento terminal do usuário.</p></li>
+                                <li><p>No entanto, uma exceção é feita quando os cookies têm o único objetivo de realizar comunicação eletrônica ou são estritamente necessários para fornecer um serviço solicitado pelo usuário.</p></li>
+                                <li><p>Além disso, o uso de um único rastreador para múltiplos propósitos não isenta de obter consentimento para os fins que o exigem. Por exemplo, se um cookie de autenticação também for usado para fins de segmentação de publicidade, o consentimento deverá ser obtido para o último objetivo, da mesma maneira que para um site não registrado.</p></li>
+                                </ul>
+                                <h1 id="sheet-n16-use-analytics-em-seus-sites-e-aplicativos">Sheet n°16: Use analytics em seus sites e aplicativos</h1>
+                                <h4 id="as-ferramentas-de-medição-de-público-alvo-são-usadas-para-obter-informações-sobre-a-navegação-dos-visitantes-em-um-site-ou-aplicativo-móvel.-em-particular-eles-possibilitam-entender-como-os-usuários-chegam-a-um-site-e-reconstruir-sua-jornada.-usando-cookies-eles-estão-sujeitos-à-regra-de-consentimento-exceto-em-um-caso-específico.-observe-que-esta-seção-é-relativa-à-diretiva-eprivacy-e-pode-estar-sujeita-a-variações-nacionais.-entre-em-contato-com-a-agência-local-de-proteção-de-dados-para-saber-sua-posição.">As ferramentas de medição de público-alvo são usadas para obter informações sobre a navegação dos visitantes em um site ou aplicativo móvel. Em particular, eles possibilitam entender como os usuários chegam a um site e reconstruir sua jornada. Usando cookies, eles estão sujeitos à regra de consentimento, exceto em um caso específico. Observe que esta seção é relativa à diretiva ePrivacy e pode estar sujeita a variações nacionais. Entre em contato com a agência local de proteção de dados para saber sua posição.</h4>
+                                <h2 id="obtenção-de-consentimento">Obtenção de consentimento</h2>
+                                <ul>
+                                <li><p>De um modo geral, <strong>antes de depositar ou ler um cookie ou rastreador,</strong> os editores de sites ou aplicativos devem:</p>
+                                <ul>
+                                <li><p>informar os internautas sobre a finalidade dos cookies;</p></li>
+                                <li><p>obtenha seu consentimento;</p></li>
+                                <li><p>forneça a eles um meio de recusá-los.</p></li>
+                                </ul></li>
+                                <li><p>A menos que caiam exatamente dentro do perímetro definido abaixo, <strong>esta obrigação se aplica aos rastreadores usados para medição de audiência</strong>.</p></li>
+                                </ul>
+                                <h2 id="para-beneficiar-da-isenção-de-consentimento">Para beneficiar da isenção de consentimento</h2>
+                                <ul>
+                                <li><p><strong>Sujeito a várias condições</strong>, os cookies usados para medir a audiência estão isentos de consentimento.</p></li>
+                                <li><p><strong>Estas condições, conforme especificado nas <a href="https://www.cnil.fr/en/cookies-and-other-tracking-devices-cnil-publishes-new-guidelines">diretrizes sobre cookies e outros rastreadores</a>, estão</strong>:</p>
+                                <ul>
+                                <li><p>Informar os usuários de seu uso;</p></li>
+                                <li><p>Dar a eles a capacidade de se oporem ao seu uso;</p></li>
+                                <li><p>Para limitar apenas aos seguintes fins:</p>
+                                <ul>
+                                <li><p>medição de audiência;</p></li>
+                                <li><p>Teste A/B;</p></li>
+                                </ul></li>
+                                <li><p>Não verificar os dados processados com outro processamento (arquivos de clientes, estatísticas de visitas a outros sites, etc.);</p></li>
+                                <li><p>Limitar o escopo do rastreador a um único site ou editor de aplicativos;</p></li>
+                                <li><p>Truncar o último byte do endereço IP;</p></li>
+                                <li><p>Para limitar a vida útil dos rastreadores a 13 meses.</p></li>
+                                </ul></li>
+                                <li><p>Desde que as condições sejam cumpridas, <strong>passamos, portanto, de um regime de aceitação para um regime de exclusão</strong>.</p></li>
+                                <li><p>Também é possível que o mesmo terceiro (subcontratado) forneça um serviço comparativo de medição de público a vários editores, desde que <strong>os dados sejam coletados, processados e armazenados independentemente para cada editor e que os rastreadores sejam independentes uns dos outros</strong></p></li>
+                                </ul>
+                                <h2 id="na-prática">Na prática</h2>
+                                <ul>
+                                <li><p><strong>A maioria das grandes ofertas de medição de público-alvo não se enquadra no escopo da isenção, independentemente de sua configuração</strong>.</p></li>
+                                <li><p>Para se beneficiar dessa isenção, entre em contato com seu provedor de soluções ou use software de código aberto, como o Matomo, que você pode configurar por conta própria.</p></li>
                                 </ul>
             </div>
 </div>
